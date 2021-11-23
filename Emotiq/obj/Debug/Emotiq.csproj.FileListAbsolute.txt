@@ -1,0 +1,10 @@
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\bin\Debug\Emotiq.exe.config
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\bin\Debug\Emotiq.exe
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\bin\Debug\Emotiq.pdb
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.csproj.AssemblyReference.cache
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.Properties.Resources.resources
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.csproj.GenerateResource.cache
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.csproj.CoreCompileInputs.cache
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.exe
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.pdb
+C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.Form1.resources

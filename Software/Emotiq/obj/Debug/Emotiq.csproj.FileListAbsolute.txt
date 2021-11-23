@@ -8,3 +8,13 @@ C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emot
 C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.exe
 C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.pdb
 C:\Users\yanni\Documents\school\semester 1\proftaak\Emotiq\Emotiq\obj\Debug\Emotiq.Form1.resources
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\bin\Debug\Emotiq.exe.config
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\bin\Debug\Emotiq.exe
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\bin\Debug\Emotiq.pdb
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.csproj.AssemblyReference.cache
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.Form1.resources
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.Properties.Resources.resources
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.csproj.GenerateResource.cache
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.csproj.CoreCompileInputs.cache
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.exe
+C:\Users\matth\OneDrive\Documenten\Fontys\Semester 1\Proftaak\Emotiq\Software\Emotiq\obj\Debug\Emotiq.pdb

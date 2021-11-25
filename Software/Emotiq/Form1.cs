@@ -10,30 +10,17 @@ using System.Windows.Forms;
 
 namespace Emotiq
 {
-    public partial class Form1 : Form
+    public partial class Emotiq : Form
     {
-        public Form1()
+        public Emotiq()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello World");
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-            MessageBox.Show("HOI Yannick");
-        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Emotiq
 {
-    partial class Form1
+    partial class Emotiq
     {
         /// <summary>
         /// Required designer variable.
@@ -29,47 +29,90 @@ namespace Emotiq
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.TabControl = new System.Windows.Forms.TabControl();
+            this.Home = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TabControl.SuspendLayout();
+            this.Home.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // TabControl
             // 
-            this.button1.Location = new System.Drawing.Point(303, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "klik hier";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.TabControl.Controls.Add(this.Home);
+            this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Controls.Add(this.tabPage1);
+            this.TabControl.Location = new System.Drawing.Point(1, 1);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(381, 554);
+            this.TabControl.TabIndex = 0;
             // 
-            // button2
+            // Home
             // 
-            this.button2.Location = new System.Drawing.Point(549, 186);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "LLLLll";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Home.Controls.Add(this.label1);
+            this.Home.Location = new System.Drawing.Point(4, 25);
+            this.Home.Name = "Home";
+            this.Home.Padding = new System.Windows.Forms.Padding(3);
+            this.Home.Size = new System.Drawing.Size(373, 525);
+            this.Home.TabIndex = 0;
+            this.Home.Text = "Home";
+            this.Home.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(373, 525);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Overzich";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(373, 525);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Instellingen";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MV Boli", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(306, 37);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Goede middag Yannick";
+            // 
+            // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(382, 553);
+            this.Controls.Add(this.TabControl);
+            this.Name = "Emotiq";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.TabControl.ResumeLayout(false);
+            this.Home.ResumeLayout(false);
+            this.Home.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabPage Home;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

@@ -34,9 +34,9 @@ namespace Emotiq
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -102,16 +102,15 @@ namespace Emotiq
             this.tabPage2.Text = "Overzich";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // btnLoad
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage1.Size = new System.Drawing.Size(533, 721);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Instellingen";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.btnLoad.Location = new System.Drawing.Point(296, 58);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(138, 66);
+            this.btnLoad.TabIndex = 1;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // dataGridView1
             // 
@@ -125,16 +124,17 @@ namespace Emotiq
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // btnLoad
+            // tabPage1
             // 
-            this.btnLoad.Location = new System.Drawing.Point(296, 58);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(138, 66);
-            this.btnLoad.TabIndex = 1;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabPage1.Size = new System.Drawing.Size(533, 721);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Instellingen";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // Emotiq
             // 

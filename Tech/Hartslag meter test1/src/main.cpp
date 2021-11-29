@@ -28,6 +28,7 @@ void setup()
 	Serial.println(Signaal);
 }
 
+<<<<<<< Updated upstream
 void loop() 
 {
 	Signaal = analogRead(PulseSensorPurplePin);
@@ -45,4 +46,8 @@ void loop()
 	
 	Serial.println(WL_CONNECTED);
 	delay(300);
+=======
+  Serial.println(Signal);
+  
+>>>>>>> Stashed changes
 }

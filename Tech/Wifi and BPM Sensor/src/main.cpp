@@ -46,6 +46,10 @@ void loop()
 
 	Serial.println(Signaal / 10);
 	
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	delay(300);
 } */
 

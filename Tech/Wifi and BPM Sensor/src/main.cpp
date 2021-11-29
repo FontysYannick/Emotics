@@ -1,15 +1,27 @@
 #include <Arduino.h>
 #include <PulseSensorPlayground.h>
 #include <WiFiNINA.h>
+using namespace std;
 
-char SSID[] = "MSI9247";
+int cout;
+int endl;
+
+int main()
+{
+	for(int x = 1; x<25; x++)
+	{
+		cout << 1+(rand()%6) << endl;
+	}
+}
+
+
+/* char SSID[] = "MSI9247";
 char PASS[] = "gr3wt2h64";
 int status = WL_IDLE_STATUS;
 
 int PulseSensorPurplePin = 0;
 int Threshold = 550;
 int Signaal;
-
 
 
 void setup() 
@@ -25,24 +37,26 @@ void setup()
 
   	Serial.println("Connected to the WiFi network");
   	Serial.println(WiFi.localIP());
-	Serial.println(Signaal);
+	delay(1000);
 }
 
-void loop() 
+void loop()
 {
 	Signaal = analogRead(PulseSensorPurplePin);
 
-	if (Signaal > Threshold)
-	{
-		Serial.println("High");
-	}
-	else 
-	{
-		Serial.println("Low");
-	}	
-		
-	Serial.println(Signaal);
+	Serial.println(Signaal / 10);
 	
-	Serial.println(WL_CONNECTED);
 	delay(300);
+} */
+
+void setup(){
+	Serial.begin(9600);
+
+
+}
+
+void loop(){
+	Serial.println("Hello World");
+	Serial.println(cout);
+
 }

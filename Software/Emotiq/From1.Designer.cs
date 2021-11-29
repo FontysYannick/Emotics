@@ -34,15 +34,15 @@ namespace Emotiq
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BPM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -106,6 +106,40 @@ namespace Emotiq
             this.tabPage2.Text = "Overzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.BPM,
+            this.Temp,
+            this.O2});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(533, 295);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // BPM
+            // 
+            this.BPM.Text = "BPM";
+            // 
+            // Temp
+            // 
+            this.Temp.Text = "Temp";
+            // 
+            // O2
+            // 
+            this.O2.Text = "O2";
+            // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -137,37 +171,6 @@ namespace Emotiq
             this.mySqlDataAdapter3.InsertCommand = null;
             this.mySqlDataAdapter3.SelectCommand = null;
             this.mySqlDataAdapter3.UpdateCommand = null;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.BPM,
-            this.Temp,
-            this.O2});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(64, 30);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(461, 295);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            // 
-            // BPM
-            // 
-            this.BPM.Text = "BPM";
-            // 
-            // Temp
-            // 
-            this.Temp.Text = "Temp";
-            // 
-            // O2
-            // 
-            this.O2.Text = "O2";
             // 
             // Emotiq
             // 

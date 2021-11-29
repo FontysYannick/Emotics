@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <PulseSensorPlayground.h>
 #include <WiFiNINA.h>
-using namespace std;
-
+#include <LiquidCrystal.h>
 
 char SSID[] = "MSI9247";
 char PASS[] = "gr3wt2h64";
@@ -11,8 +10,6 @@ int status = WL_IDLE_STATUS;
 int PulseSensorPurplePin = 0;
 int Threshold = 550;
 int Signaal;
-
-
 
 void setup() 
 {

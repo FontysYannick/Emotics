@@ -10,16 +10,17 @@
             "includePath": [
                 "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/include",
                 "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/src",
+                "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/LiquidCrystal",
                 "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/WiFiNINA/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SPI/src",
                 "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/PulseSensor Playground/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino/api/deprecated",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/variants/uno2018",
+                "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/EEPROM/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/HID/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SoftwareSerial/src",
-                "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                 "C:/Users/alexk/.platformio/packages/tool-unity",
                 ""
             ],
@@ -28,16 +29,17 @@
                 "path": [
                     "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/include",
                     "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/src",
+                    "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/LiquidCrystal",
                     "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/WiFiNINA/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SPI/src",
                     "C:/Users/alexk/OneDrive/Documenten/Documentjes fontys ict/Proftaak/Emotiq/Emotiq/Tech/Wifi and BPM Sensor/.pio/libdeps/uno_wifi_rev2/PulseSensor Playground/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino/api/deprecated",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/variants/uno2018",
+                    "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/EEPROM/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/HID/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SoftwareSerial/src",
-                    "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                     "C:/Users/alexk/.platformio/packages/tool-unity",
                     ""
                 ]

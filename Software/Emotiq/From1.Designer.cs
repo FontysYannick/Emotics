@@ -34,13 +34,18 @@ namespace Emotiq
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BPM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -92,38 +97,14 @@ namespace Emotiq
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnLoad);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(533, 721);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Overzich";
+            this.tabPage2.Text = "Overzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(296, 58);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(138, 66);
-            this.btnLoad.TabIndex = 1;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(49, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -136,6 +117,58 @@ namespace Emotiq
             this.tabPage1.Text = "Instellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // mySqlDataAdapter1
+            // 
+            this.mySqlDataAdapter1.DeleteCommand = null;
+            this.mySqlDataAdapter1.InsertCommand = null;
+            this.mySqlDataAdapter1.SelectCommand = null;
+            this.mySqlDataAdapter1.UpdateCommand = null;
+            // 
+            // mySqlDataAdapter2
+            // 
+            this.mySqlDataAdapter2.DeleteCommand = null;
+            this.mySqlDataAdapter2.InsertCommand = null;
+            this.mySqlDataAdapter2.SelectCommand = null;
+            this.mySqlDataAdapter2.UpdateCommand = null;
+            // 
+            // mySqlDataAdapter3
+            // 
+            this.mySqlDataAdapter3.DeleteCommand = null;
+            this.mySqlDataAdapter3.InsertCommand = null;
+            this.mySqlDataAdapter3.SelectCommand = null;
+            this.mySqlDataAdapter3.UpdateCommand = null;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.BPM,
+            this.Temp,
+            this.O2});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(64, 30);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(461, 295);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // BPM
+            // 
+            this.BPM.Text = "BPM";
+            // 
+            // Temp
+            // 
+            this.Temp.Text = "Temp";
+            // 
+            // O2
+            // 
+            this.O2.Text = "O2";
+            // 
             // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,13 +176,13 @@ namespace Emotiq
             this.ClientSize = new System.Drawing.Size(542, 753);
             this.Controls.Add(this.TabControl);
             this.Name = "Emotiq";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,8 +195,14 @@ namespace Emotiq
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnLoad;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter2;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter3;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader BPM;
+        private System.Windows.Forms.ColumnHeader Temp;
+        private System.Windows.Forms.ColumnHeader O2;
     }
 }
 

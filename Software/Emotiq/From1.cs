@@ -13,40 +13,61 @@ namespace Emotiq
 {
     public partial class Emotiq : Form
     {
-        myDBConnection con = new myDBConnection();
-        MySqlCommand command;
-        MySqlDataAdapter da;
-        DataTable dt;
         public Emotiq()
         {
             InitializeComponent();
-            con.Connect();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //myDBConnection db = new myDBConnection();
 
-        }
+            string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
+            // Your query,
+            string query = "SELECT * FROM emotietabel";
 
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
+            // Prepare the connection
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            commandDatabase.CommandTimeout = 60;
+            MySqlDataReader reader;
+
             try
             {
-                Console.WriteLine("1");
-                con.cn.Open();
-                command = new MySqlCommand("Select * from EmotieTabel", con.cn);
-                
-                command.ExecuteNonQuery();
-                Console.WriteLine("2");
-                dt = new DataTable();
-                da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                dataGridView1.DataSource = dt.DefaultView;
-                con.cn.Close();
+                // Open the database
+                databaseConnection.Open();
+
+                // Execute the query
+                reader = commandDatabase.ExecuteReader();
+
+                // All succesfully executed, now do something
+
+                // IMPORTANT : 
+                // If your query returns result, use the following processor :
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3));
+                        // As our database, the array will contain : ID 0, BPM 1, Temp 2, O2 3
+                        // Do something with every received database ROW
+                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3) };
+                        var listViewItem = new ListViewItem(row);
+                        listView1.Items.Add(listViewItem); 
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+
+                // Finally close the connection
+                databaseConnection.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("test");
+                // Show any error message.
                 MessageBox.Show(ex.Message);
             }
         }

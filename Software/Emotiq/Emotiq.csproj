@@ -89,15 +89,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="From1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="From1.Designer.cs">
       <DependentUpon>From1.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDBConnection.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipsQuotes.cs" />
     <EmbeddedResource Include="From1.resx">
       <DependentUpon>From1.cs</DependentUpon>
     </EmbeddedResource>

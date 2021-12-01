@@ -33,19 +33,20 @@ namespace Emotiq
             this.Home = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Overzicht = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BPM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Instellingen = new System.Windows.Forms.TabPage();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.ContactPersonen = new System.Windows.Forms.TabPage();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Overzicht.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -54,8 +55,9 @@ namespace Emotiq
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.Home);
-            this.TabControl.Controls.Add(this.tabPage2);
-            this.TabControl.Controls.Add(this.tabPage1);
+            this.TabControl.Controls.Add(this.Overzicht);
+            this.TabControl.Controls.Add(this.ContactPersonen);
+            this.TabControl.Controls.Add(this.Instellingen);
             this.TabControl.Location = new System.Drawing.Point(1, 1);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
@@ -95,16 +97,16 @@ namespace Emotiq
             this.label1.TabIndex = 1;
             this.label1.Text = "Goedemiddag Matthijs";
             // 
-            // tabPage2
+            // Overzicht
             // 
-            this.tabPage2.Controls.Add(this.listView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(533, 721);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Overzicht";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.Overzicht.Controls.Add(this.listView1);
+            this.Overzicht.Location = new System.Drawing.Point(4, 25);
+            this.Overzicht.Name = "Overzicht";
+            this.Overzicht.Padding = new System.Windows.Forms.Padding(3);
+            this.Overzicht.Size = new System.Drawing.Size(533, 721);
+            this.Overzicht.TabIndex = 1;
+            this.Overzicht.Text = "Overzicht";
+            this.Overzicht.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
@@ -140,16 +142,16 @@ namespace Emotiq
             // 
             this.O2.Text = "O2";
             // 
-            // tabPage1
+            // Instellingen
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage1.Size = new System.Drawing.Size(533, 721);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Instellingen";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Instellingen.Location = new System.Drawing.Point(4, 25);
+            this.Instellingen.Name = "Instellingen";
+            this.Instellingen.Padding = new System.Windows.Forms.Padding(3);
+            this.Instellingen.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Instellingen.Size = new System.Drawing.Size(533, 721);
+            this.Instellingen.TabIndex = 2;
+            this.Instellingen.Text = "Instellingen";
+            this.Instellingen.UseVisualStyleBackColor = true;
             // 
             // mySqlDataAdapter1
             // 
@@ -172,6 +174,16 @@ namespace Emotiq
             this.mySqlDataAdapter3.SelectCommand = null;
             this.mySqlDataAdapter3.UpdateCommand = null;
             // 
+            // ContactPersonen
+            // 
+            this.ContactPersonen.Location = new System.Drawing.Point(4, 25);
+            this.ContactPersonen.Name = "ContactPersonen";
+            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(3);
+            this.ContactPersonen.Size = new System.Drawing.Size(533, 721);
+            this.ContactPersonen.TabIndex = 3;
+            this.ContactPersonen.Text = "ContactPersonen";
+            this.ContactPersonen.UseVisualStyleBackColor = true;
+            // 
             // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -185,7 +197,7 @@ namespace Emotiq
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.Overzicht.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -195,8 +207,8 @@ namespace Emotiq
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Home;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage Overzicht;
+        private System.Windows.Forms.TabPage Instellingen;
         private System.Windows.Forms.Label label2;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter2;
@@ -206,6 +218,7 @@ namespace Emotiq
         private System.Windows.Forms.ColumnHeader BPM;
         private System.Windows.Forms.ColumnHeader Temp;
         private System.Windows.Forms.ColumnHeader O2;
+        private System.Windows.Forms.TabPage ContactPersonen;
     }
 }
 

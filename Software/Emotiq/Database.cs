@@ -92,14 +92,56 @@ namespace Emotiq
             return items;
         } 
 
-        public void verwijderen(int id)
+        public void toevoegen(string voornaam, string tussenvoegsel, string achternaam, string telefoonnummer)
         {
+            string query = "INSERT INTO contactpersonen(`ID`, `voornaam`, `tv`, `achternaam`, `telefoonnummer`) VALUES (NULL, '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + telefoonnummer + "')";
+            // Which could be translated manually to :t
+            // INSERT INTO user(`id`, `first_name`, `last_name`, `address`) VALUES (NULL, 'Bruce', 'Wayne', 'Wayne Manor')
 
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            commandDatabase.CommandTimeout = 60;
+
+            try
+            {
+                databaseConnection.Open();
+                MySqlDataReader myReader = commandDatabase.ExecuteReader();
+
+                MessageBox.Show("User succesfully registered", "Registerd", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                databaseConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Show any error message.
+                MessageBox.Show(ex.Message);
+            }
         }
-
-        public void toevoegen(int id, string voornaam, string tussenvoegsel, string achternaam, int telefoonnummer)
+        public void verwijderen(string id)
         {
+            // Delete the item with ID 1
+            string query = "DELETE FROM `contactpersonen` WHERE id = " + id;
 
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            commandDatabase.CommandTimeout = 60;
+            MySqlDataReader reader;
+
+            try
+            {
+                databaseConnection.Open();
+                reader = commandDatabase.ExecuteReader();
+
+                // Succesfully deleted
+                MessageBox.Show("User succesfully deleted", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                databaseConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Ops, maybe the id doesn't exists ?
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

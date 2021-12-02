@@ -13,6 +13,9 @@ namespace Emotiq
 {
     public partial class Emotiq : Form
     {
+        Database db = new Database();
+        private string id;
+
         public Emotiq()
         {
             InitializeComponent();
@@ -20,7 +23,65 @@ namespace Emotiq
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Database db = new Database();
+            clear();
+        }
+
+        private void Listcontact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BTNadd.Enabled = false;
+            BTNremove.Enabled = true;
+            if (Listcontact.SelectedItems.Count > 0)
+            {
+                ListViewItem item = Listcontact.SelectedItems[0];
+                id = item.SubItems[0].Text;
+                TBvoornaam.Text = item.SubItems[1].Text;
+                TBtussen.Text = item.SubItems[2].Text;
+                TBachternaam.Text = item.SubItems[3].Text;
+                TBtelefoon.Text = item.SubItems[4].Text;
+            }
+            else
+            {
+                BTNadd.Enabled = true;
+                TBvoornaam.Text = string.Empty;
+                TBtussen.Text = string.Empty;
+                TBachternaam.Text = string.Empty;
+                TBtelefoon.Text = string.Empty;
+            }
+        }
+
+        private void BTNadd_Click(object sender, EventArgs e)
+        {
+            if (emptyboxcheck())
+            {
+                string voornaam = TBvoornaam.Text;
+                string tv = TBtussen.Text;
+                string achternaam = TBachternaam.Text;
+                string telefoon = TBtelefoon.Text;
+
+                db.toevoegen(voornaam, tv, achternaam, telefoon);
+                clear();
+            }    
+        }
+
+        private void BTNremove_Click(object sender, EventArgs e)
+        {
+            db.verwijderen(id);
+            BTNadd.Enabled = true;
+            BTNremove.Enabled = false;
+            clear();
+        }
+
+        private void clear() 
+        {
+            TBvoornaam.Text = "";
+            TBtussen.Text = "";
+            TBachternaam.Text = "";
+            TBtelefoon.Text = "";
+
+            Listemotietabel.Items.Clear();
+            Listcontact.Items.Clear();
+            BTNremove.Enabled = false;
+
             List<ListViewItem> value = db.opvragen("emotietabel", 4);
             foreach (var item in value)
             {
@@ -34,22 +95,26 @@ namespace Emotiq
             }
         }
 
-        private void Listcontact_SelectedIndexChanged(object sender, EventArgs e)
+        private bool emptyboxcheck()
         {
-            if (Listcontact.SelectedItems.Count > 0)
+            if (String.IsNullOrEmpty(TBvoornaam.Text))
             {
-                ListViewItem item = Listcontact.SelectedItems[0];
-                TBvoornaam.Text = item.SubItems[1].Text;
-                TBtussen.Text = item.SubItems[2].Text;
-                TBachternaam.Text = item.SubItems[3].Text;
-                TBtelefoon.Text = item.SubItems[4].Text;
+                MessageBox.Show("Vul alle velden");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(TBachternaam.Text))
+            {
+                MessageBox.Show("Vul alle velden");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(TBtelefoon.Text))
+            {
+                MessageBox.Show("Vul alle velden");
+                return false;
             }
             else
             {
-                TBvoornaam.Text = string.Empty;
-                TBtussen.Text = string.Empty;
-                TBachternaam.Text = string.Empty;
-                TBachternaam.Text = string.Empty;
+                return true;
             }
         }
     }

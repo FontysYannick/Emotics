@@ -40,24 +40,27 @@ namespace Emotiq
             this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ContactPersonen = new System.Windows.Forms.TabPage();
+            this.BTNremove = new System.Windows.Forms.Button();
+            this.BTNupdate = new System.Windows.Forms.Button();
+            this.BTNadd = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TBtelefoon = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TBachternaam = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TBtussen = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TBvoornaam = new System.Windows.Forms.TextBox();
             this.Listcontact = new System.Windows.Forms.ListView();
-            this.Instellingen = new System.Windows.Forms.TabPage();
-            this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Instellingen = new System.Windows.Forms.TabPage();
+            this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.TBvoornaam = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TBtussen = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TBachternaam = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TBtelefoon = new System.Windows.Forms.TextBox();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.Overzicht.SuspendLayout();
@@ -159,6 +162,9 @@ namespace Emotiq
             // 
             // ContactPersonen
             // 
+            this.ContactPersonen.Controls.Add(this.BTNremove);
+            this.ContactPersonen.Controls.Add(this.BTNupdate);
+            this.ContactPersonen.Controls.Add(this.BTNadd);
             this.ContactPersonen.Controls.Add(this.label6);
             this.ContactPersonen.Controls.Add(this.TBtelefoon);
             this.ContactPersonen.Controls.Add(this.label5);
@@ -176,6 +182,99 @@ namespace Emotiq
             this.ContactPersonen.Text = "ContactPersonen";
             this.ContactPersonen.UseVisualStyleBackColor = true;
             // 
+            // BTNremove
+            // 
+            this.BTNremove.Location = new System.Drawing.Point(388, 469);
+            this.BTNremove.Name = "BTNremove";
+            this.BTNremove.Size = new System.Drawing.Size(85, 31);
+            this.BTNremove.TabIndex = 11;
+            this.BTNremove.Text = "Remove";
+            this.BTNremove.UseVisualStyleBackColor = true;
+            this.BTNremove.Click += new System.EventHandler(this.BTNremove_Click);
+            // 
+            // BTNupdate
+            // 
+            this.BTNupdate.Location = new System.Drawing.Point(297, 469);
+            this.BTNupdate.Name = "BTNupdate";
+            this.BTNupdate.Size = new System.Drawing.Size(85, 31);
+            this.BTNupdate.TabIndex = 10;
+            this.BTNupdate.Text = "Update";
+            this.BTNupdate.UseVisualStyleBackColor = true;
+            // 
+            // BTNadd
+            // 
+            this.BTNadd.Location = new System.Drawing.Point(206, 469);
+            this.BTNadd.Name = "BTNadd";
+            this.BTNadd.Size = new System.Drawing.Size(85, 31);
+            this.BTNadd.TabIndex = 9;
+            this.BTNadd.Text = "Add";
+            this.BTNadd.UseVisualStyleBackColor = true;
+            this.BTNadd.Click += new System.EventHandler(this.BTNadd_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 453);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Telefoonummer";
+            // 
+            // TBtelefoon
+            // 
+            this.TBtelefoon.Location = new System.Drawing.Point(37, 473);
+            this.TBtelefoon.Name = "TBtelefoon";
+            this.TBtelefoon.Size = new System.Drawing.Size(140, 22);
+            this.TBtelefoon.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(338, 391);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 17);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Achternaam";
+            // 
+            // TBachternaam
+            // 
+            this.TBachternaam.Location = new System.Drawing.Point(341, 411);
+            this.TBachternaam.Name = "TBachternaam";
+            this.TBachternaam.Size = new System.Drawing.Size(140, 22);
+            this.TBachternaam.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(203, 391);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Tussenvoegsel";
+            // 
+            // TBtussen
+            // 
+            this.TBtussen.Location = new System.Drawing.Point(206, 411);
+            this.TBtussen.Name = "TBtussen";
+            this.TBtussen.Size = new System.Drawing.Size(60, 22);
+            this.TBtussen.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 391);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Voornaam";
+            // 
+            // TBvoornaam
+            // 
+            this.TBvoornaam.Location = new System.Drawing.Point(37, 411);
+            this.TBvoornaam.Name = "TBvoornaam";
+            this.TBvoornaam.Size = new System.Drawing.Size(140, 22);
+            this.TBvoornaam.TabIndex = 1;
+            // 
             // Listcontact
             // 
             this.Listcontact.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -192,6 +291,30 @@ namespace Emotiq
             this.Listcontact.UseCompatibleStateImageBehavior = false;
             this.Listcontact.View = System.Windows.Forms.View.Details;
             this.Listcontact.SelectedIndexChanged += new System.EventHandler(this.Listcontact_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 31;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Voornaam";
+            this.columnHeader2.Width = 91;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Tussenvoegsel";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Achternaam";
+            this.columnHeader4.Width = 87;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Telefoonnummer";
+            this.columnHeader5.Width = 117;
             // 
             // Instellingen
             // 
@@ -218,100 +341,12 @@ namespace Emotiq
             this.mySqlDataAdapter3.SelectCommand = null;
             this.mySqlDataAdapter3.UpdateCommand = null;
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 31;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Voornaam";
-            this.columnHeader2.Width = 91;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Tussenvoegsel";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Achternaam";
-            this.columnHeader4.Width = 87;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Telefoonnummer";
-            this.columnHeader5.Width = 117;
-            // 
             // mySqlDataAdapter1
             // 
             this.mySqlDataAdapter1.DeleteCommand = null;
             this.mySqlDataAdapter1.InsertCommand = null;
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
-            // 
-            // TBvoornaam
-            // 
-            this.TBvoornaam.Location = new System.Drawing.Point(37, 411);
-            this.TBvoornaam.Name = "TBvoornaam";
-            this.TBvoornaam.Size = new System.Drawing.Size(140, 22);
-            this.TBvoornaam.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 391);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Voornaam";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 391);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Tussenvoegsel";
-            // 
-            // TBtussen
-            // 
-            this.TBtussen.Location = new System.Drawing.Point(206, 411);
-            this.TBtussen.Name = "TBtussen";
-            this.TBtussen.Size = new System.Drawing.Size(60, 22);
-            this.TBtussen.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(338, 391);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 17);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Achternaam";
-            // 
-            // TBachternaam
-            // 
-            this.TBachternaam.Location = new System.Drawing.Point(341, 411);
-            this.TBachternaam.Name = "TBachternaam";
-            this.TBachternaam.Size = new System.Drawing.Size(140, 22);
-            this.TBachternaam.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 453);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Telefoonummer";
-            // 
-            // TBtelefoon
-            // 
-            this.TBtelefoon.Location = new System.Drawing.Point(37, 473);
-            this.TBtelefoon.Name = "TBtelefoon";
-            this.TBtelefoon.Size = new System.Drawing.Size(140, 22);
-            this.TBtelefoon.TabIndex = 7;
             // 
             // Emotiq
             // 
@@ -364,6 +399,9 @@ namespace Emotiq
         private System.Windows.Forms.TextBox TBachternaam;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TBtussen;
+        private System.Windows.Forms.Button BTNadd;
+        private System.Windows.Forms.Button BTNremove;
+        private System.Windows.Forms.Button BTNupdate;
     }
 }
 

@@ -12,9 +12,9 @@ namespace Emotiq
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
-        public enum Brandstof
+        public enum Tabels
         {
-            benzine_auto = 100,
+            emotietabel = 4,
             diesel_auto = 150,
             LPG_auto = 90,
             elektrische_auto = 130
@@ -31,7 +31,7 @@ namespace Emotiq
         }
 
 
-        public List<ListViewItem> opvragen(Brandstof/* string tabelnaam, int colloms*/)
+        public List<ListViewItem> opvragen(string tabelnaam, int colloms)
         {
             string query = "SELECT * FROM " + tabelnaam;
             List<ListViewItem> items = new List<ListViewItem>();
@@ -62,11 +62,15 @@ namespace Emotiq
                         Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3));
                         // As our database, the array will contain : ID 0, BPM 1, Temp 2, O2 3
                         // Do something with every received database ROW
-                        //string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3) };
-                        //string[] row = { reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) };
-                        if (colloms == 3)
+                        if (colloms == 4)
                         {
                             string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3) };
+                            var listViewItem = new ListViewItem(row);
+                            items.Add(listViewItem);
+                        }
+                        else if (colloms == 5)
+                        {
+                            string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) };
                             var listViewItem = new ListViewItem(row);
                             items.Add(listViewItem);
                         }

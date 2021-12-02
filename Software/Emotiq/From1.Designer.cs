@@ -39,14 +39,16 @@ namespace Emotiq
             this.BPM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ContactPersonen = new System.Windows.Forms.TabPage();
             this.Instellingen = new System.Windows.Forms.TabPage();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.ContactPersonen = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.Overzicht.SuspendLayout();
+            this.ContactPersonen.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -142,6 +144,17 @@ namespace Emotiq
             // 
             this.O2.Text = "O2";
             // 
+            // ContactPersonen
+            // 
+            this.ContactPersonen.Controls.Add(this.listView2);
+            this.ContactPersonen.Location = new System.Drawing.Point(4, 25);
+            this.ContactPersonen.Name = "ContactPersonen";
+            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(3);
+            this.ContactPersonen.Size = new System.Drawing.Size(533, 721);
+            this.ContactPersonen.TabIndex = 3;
+            this.ContactPersonen.Text = "ContactPersonen";
+            this.ContactPersonen.UseVisualStyleBackColor = true;
+            // 
             // Instellingen
             // 
             this.Instellingen.Location = new System.Drawing.Point(4, 25);
@@ -174,15 +187,14 @@ namespace Emotiq
             this.mySqlDataAdapter3.SelectCommand = null;
             this.mySqlDataAdapter3.UpdateCommand = null;
             // 
-            // ContactPersonen
+            // listView2
             // 
-            this.ContactPersonen.Location = new System.Drawing.Point(4, 25);
-            this.ContactPersonen.Name = "ContactPersonen";
-            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(3);
-            this.ContactPersonen.Size = new System.Drawing.Size(533, 721);
-            this.ContactPersonen.TabIndex = 3;
-            this.ContactPersonen.Text = "ContactPersonen";
-            this.ContactPersonen.UseVisualStyleBackColor = true;
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(0, 0);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(533, 372);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // Emotiq
             // 
@@ -198,6 +210,7 @@ namespace Emotiq
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
             this.Overzicht.ResumeLayout(false);
+            this.ContactPersonen.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -219,6 +232,7 @@ namespace Emotiq
         private System.Windows.Forms.ColumnHeader Temp;
         private System.Windows.Forms.ColumnHeader O2;
         private System.Windows.Forms.TabPage ContactPersonen;
+        private System.Windows.Forms.ListView listView2;
     }
 }
 

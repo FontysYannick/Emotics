@@ -21,12 +21,16 @@ namespace Emotiq
         private void Form1_Load(object sender, EventArgs e)
         {
             Database db = new Database();
-            List<ListViewItem> items = db.opvragen(Database.Brandstof.benzine_auto);
-            //List<ListViewItem> items = db.opvragen("contactgegevens", 4);
-
-            foreach (var item in items)
+            List<ListViewItem> value = db.opvragen("emotietabel", 4);
+            foreach (var item in value)
             {
                 listView1.Items.Add(item);
+            }
+
+            List<ListViewItem> contact = db.opvragen("contactgegevens", 5);
+            foreach (var item in contact)
+            {
+                listView2.Items.Add(item);
             }
         }
     }

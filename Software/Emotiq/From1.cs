@@ -24,13 +24,32 @@ namespace Emotiq
             List<ListViewItem> value = db.opvragen("emotietabel", 4);
             foreach (var item in value)
             {
-                listView1.Items.Add(item);
+                Listemotietabel.Items.Add(item);
             }
 
-            List<ListViewItem> contact = db.opvragen("contactgegevens", 5);
+            List<ListViewItem> contact = db.opvragen("contactpersonen", 5);
             foreach (var item in contact)
             {
-                listView2.Items.Add(item);
+                Listcontact.Items.Add(item);
+            }
+        }
+
+        private void Listcontact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Listcontact.SelectedItems.Count > 0)
+            {
+                ListViewItem item = Listcontact.SelectedItems[0];
+                TBvoornaam.Text = item.SubItems[1].Text;
+                TBtussen.Text = item.SubItems[2].Text;
+                TBachternaam.Text = item.SubItems[3].Text;
+                TBtelefoon.Text = item.SubItems[4].Text;
+            }
+            else
+            {
+                TBvoornaam.Text = string.Empty;
+                TBtussen.Text = string.Empty;
+                TBachternaam.Text = string.Empty;
+                TBachternaam.Text = string.Empty;
             }
         }
     }

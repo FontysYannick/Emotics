@@ -12,7 +12,7 @@ namespace Emotiq
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
-        public enum Tabels
+        /*public enum Tabels
         {
             emotietabel = 4,
             diesel_auto = 150,
@@ -28,7 +28,7 @@ namespace Emotiq
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
-        }
+        }*/
 
 
         public List<ListViewItem> opvragen(string tabelnaam, int colloms)
@@ -53,7 +53,6 @@ namespace Emotiq
 
                 // IMPORTANT : 
                 // If your query returns result, use the following processor :
-
                 if (reader.HasRows)
                 {
 
@@ -74,9 +73,6 @@ namespace Emotiq
                             var listViewItem = new ListViewItem(row);
                             items.Add(listViewItem);
                         }
-
-                        //var listViewItem = new ListViewItem(row);
-                        //items.Add(listViewItem);
                     }
                 }
                 else

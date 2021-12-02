@@ -12,25 +12,6 @@ namespace Emotiq
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
-        /*public enum Tabels
-        {
-            emotietabel = 4,
-            diesel_auto = 150,
-            LPG_auto = 90,
-            elektrische_auto = 130
-        };
-
-        private void connect(string tabelnaam)
-        {
-            string query = "SELECT * FROM " + tabelnaam;
-
-            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
-            MySqlDataReader reader;
-        }*/
-
-
         public List<ListViewItem> opvragen(string tabelnaam, int colloms)
         {
             string query = "SELECT * FROM " + tabelnaam;

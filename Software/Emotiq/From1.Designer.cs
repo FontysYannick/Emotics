@@ -52,15 +52,15 @@ namespace Emotiq
             this.label3 = new System.Windows.Forms.Label();
             this.TBvoornaam = new System.Windows.Forms.TextBox();
             this.Listcontact = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMvoornaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMtussen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMachternaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMtelefoon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Instellingen = new System.Windows.Forms.TabPage();
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.CLMid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.Overzicht.SuspendLayout();
@@ -278,11 +278,11 @@ namespace Emotiq
             // Listcontact
             // 
             this.Listcontact.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
+            this.CLMid,
+            this.CLMvoornaam,
+            this.CLMtussen,
+            this.CLMachternaam,
+            this.CLMtelefoon});
             this.Listcontact.HideSelection = false;
             this.Listcontact.Location = new System.Drawing.Point(0, 0);
             this.Listcontact.Name = "Listcontact";
@@ -292,29 +292,24 @@ namespace Emotiq
             this.Listcontact.View = System.Windows.Forms.View.Details;
             this.Listcontact.SelectedIndexChanged += new System.EventHandler(this.Listcontact_SelectedIndexChanged);
             // 
-            // columnHeader1
+            // CLMvoornaam
             // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 31;
+            this.CLMvoornaam.Text = "Voornaam";
+            this.CLMvoornaam.Width = 91;
             // 
-            // columnHeader2
+            // CLMtussen
             // 
-            this.columnHeader2.Text = "Voornaam";
-            this.columnHeader2.Width = 91;
+            this.CLMtussen.Text = "Tussenvoegsel";
             // 
-            // columnHeader3
+            // CLMachternaam
             // 
-            this.columnHeader3.Text = "Tussenvoegsel";
+            this.CLMachternaam.Text = "Achternaam";
+            this.CLMachternaam.Width = 87;
             // 
-            // columnHeader4
+            // CLMtelefoon
             // 
-            this.columnHeader4.Text = "Achternaam";
-            this.columnHeader4.Width = 87;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Telefoonnummer";
-            this.columnHeader5.Width = 117;
+            this.CLMtelefoon.Text = "Telefoonnummer";
+            this.CLMtelefoon.Width = 117;
             // 
             // Instellingen
             // 
@@ -347,6 +342,10 @@ namespace Emotiq
             this.mySqlDataAdapter1.InsertCommand = null;
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
+            // 
+            // CLMid
+            // 
+            this.CLMid.Text = "ID";
             // 
             // Emotiq
             // 
@@ -385,11 +384,10 @@ namespace Emotiq
         private System.Windows.Forms.ColumnHeader O2;
         private System.Windows.Forms.TabPage ContactPersonen;
         private System.Windows.Forms.ListView Listcontact;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader CLMvoornaam;
+        private System.Windows.Forms.ColumnHeader CLMtussen;
+        private System.Windows.Forms.ColumnHeader CLMachternaam;
+        private System.Windows.Forms.ColumnHeader CLMtelefoon;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TBvoornaam;
@@ -402,6 +400,7 @@ namespace Emotiq
         private System.Windows.Forms.Button BTNadd;
         private System.Windows.Forms.Button BTNremove;
         private System.Windows.Forms.Button BTNupdate;
+        private System.Windows.Forms.ColumnHeader CLMid;
     }
 }
 

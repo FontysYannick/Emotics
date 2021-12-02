@@ -42,11 +42,11 @@ void loop()
 {
 	Signaal = analogRead(PulseSensorPurplePin);
 	
-	Serial.println(Signaal / 10);
+	//Serial.println(Signaal / 10);
 	delay(300); 
-	lcd.print("Sec zonder");
-	lcd.setCursor(0, 1);
-	lcd.print("ongeval");
-	lcd.print(millis() / 1000);
-	lcd.setCursor(0,0);
+	lcd.setCursor(0, 0);
+	lcd.print("BPM <3: ");
+	lcd.print(Signaal);
+	int bpm = map(Signaal, 0, 1000, 0, 200);
+	Serial.println(bpm);
 }

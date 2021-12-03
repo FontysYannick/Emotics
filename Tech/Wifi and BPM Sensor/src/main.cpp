@@ -1,4 +1,4 @@
-#include <Arduino.h>/*je moeder*/
+#include <Arduino.h>
 #include <PulseSensorPlayground.h>
 #include <WiFiNINA.h>
 #include <LiquidCrystal.h>
@@ -6,25 +6,25 @@
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
 
+const int PulseSensorPurplePin = 0; //pin voor hartslag sensor
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
+
 unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
-char SSID[] = "MSI9247";
-char PASS[] = "gr3wt2h64";
-int status = WL_IDLE_STATUS;
+char SSID[] = "LAPTOP-TGTISK9B 1790"; //mobiele hotspot van laptop naam
+char PASS[] = "955Y1n51"; //mobiele hotspot ww
 
-int PulseSensorPurplePin = 0;
-int Threshold = 550;
-int Signaal;
+const char server[] = "studmysql01.fhict.local"; //database
 
-int BPM = Signaal / 10;
+int status = WL_IDLE_STATUS; //geen idee
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+//int Threshold = 550; doet niks en geen idee wat t is
+int Signaal; //signaal wat van hartslag sensor afkomt
+int BPM = Signaal / 10; //kan wss met mapping maar lukt niet
 
-const char server[] = "studmysql01.fhict.local";
-
-/*WiFiClient wifi;
+WiFiClient wifi;
 HttpClient client = HttpClient(wifi, server, 2435);
 
 int clientId = 0;
@@ -62,14 +62,14 @@ void updateAmperage() {
   	if(client.responseStatusCode() == 406) {
     	registerArduino();
   	}
-}*/
+}
 
 void setup() 
 {
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
 	
-	/*while (status != WL_CONNECTED)
+	while (status != WL_CONNECTED)
   	{
    		Serial.print("Connecting to WiFi");
     	delay(200);
@@ -84,19 +84,19 @@ void setup()
 
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
-	delay(1000);*/
+	delay(1000);
 
-	/*if (CurrentTime - PreviousTime >= EventTime)
+	if (CurrentTime - PreviousTime >= EventTime)
 	{
 		registerArduino();
-	}*/
+	}
 }
 
 void loop()
 {
 	Signaal = analogRead(PulseSensorPurplePin);
 	
-	Serial.println(Signaal / 10);
+	//Serial.println(Signaal / 10);
 	lcd.setCursor(0, 0);
 	lcd.print("BPM <3: ");
 	lcd.print(Signaal / 10);

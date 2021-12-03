@@ -13,23 +13,25 @@ unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
-char SSID[] = "LAPTOP-TGTISK9B 1790"; //mobiele hotspot van laptop naam
-char PASS[] = "955Y1n51"; //mobiele hotspot ww
+char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
 const char server[] = "studmysql01.fhict.local"; //database
 
-int status = WL_IDLE_STATUS; //geen idee
-
-//int Threshold = 550; doet niks en geen idee wat t is
-int Signaal; //signaal wat van hartslag sensor afkomt
-int BPM = Signaal / 10; //kan wss met mapping maar lukt niet
+int status = WL_IDLE_STATUS; //Wifi status
 
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, server, 2435);
 
+int Signaal; //signaal wat van hartslag sensor afkomt
+int BPM;  //map function voor BPM
+
 int clientId = 0;
 
-void registerArduino() {
+int Second = 0;
+int Minute = 0;
+
+/*void registerArduino() {
   StaticJsonDocument<8> json;
 
   json["tafelNummer"] = 1;
@@ -62,7 +64,7 @@ void updateAmperage() {
   	if(client.responseStatusCode() == 406) {
     	registerArduino();
   	}
-}
+}*/
 
 void setup() 
 {
@@ -84,30 +86,81 @@ void setup()
 
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
-	delay(1000);
+	delay(1200);
 
-	if (CurrentTime - PreviousTime >= EventTime)
+	lcd.setCursor(12,1);
+	lcd.print("0.00");
+
+	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
 		registerArduino();
-	}
+	}*/
 }
+
+
 
 void loop()
 {
 	Signaal = analogRead(PulseSensorPurplePin);
+	BPM = map(Signaal, 0, 1000, 0, 100);
 	
-	//Serial.println(Signaal / 10);
+	Serial.print("BPM : ");
+	Serial.println(Signaal / 10);
+
 	lcd.setCursor(0, 0);
 	lcd.print("BPM <3: ");
-	lcd.print(Signaal / 10);
-	delay(500);
+	lcd.print(BPM); // klopt
+	
+	lcd.setCursor(0, 1);
+	lcd.print("Time past: ");
+	lcd.setCursor(13,1); // klopt
+	
+	
+	if (Second < 10)
+	{
+		lcd.setCursor(15,1);
+		lcd.print(Second);
+		lcd.setCursor(14,1);
+		lcd.print("0");
+
+		Serial.print("Sec : ");
+		Serial.println(Second);
+	}
+	else {
+		lcd.setCursor(14,1);
+		lcd.print(Second);
+
+		Serial.print("Sec : ");
+		Serial.println(Second); // klopt
+	}
+	
+	
+	if (Second > 60)
+	{
+		Second = 0;
+		Second ++;
+		Minute ++;
+
+		lcd.setCursor(14,1);
+		lcd.print("00");
+		lcd.setCursor(12,1);
+		lcd.print(Minute);
+
+		Serial.print("Min : ");
+		Serial.println(Minute);
+	}
+	Serial.println("");
+	Second ++;
+	delay(1000);
+
+
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
 	updateAmperage();
 	client.print("Test");
-	}*/
+	}
 
-	/*if(client.connect(server, 3306)) {
+	if(client.connect(server, 3306)) {
 		client.print("GET /write_data.php?");
 		client.print("value=");
 		client.print(Signaal / 10);

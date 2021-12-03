@@ -30,9 +30,6 @@ namespace Emotiq
                 // Execute the query
                 reader = commandDatabase.ExecuteReader();
 
-                // All succesfully executed, now do something
-
-                // IMPORTANT : 
                 // If your query returns result, use the following processor :
                 if (reader.HasRows)
                 {
@@ -40,7 +37,7 @@ namespace Emotiq
                     while (reader.Read())
                     {
                         Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3));
-                        // As our database, the array will contain : ID 0, BPM 1, Temp 2, O2 3
+                        // ID 0, BPM 1, Temp 2, O2 3
                         // Do something with every received database ROW
                         if (colloms == 4)
                         {
@@ -58,15 +55,16 @@ namespace Emotiq
                 }
                 else
                 {
+                    // if there are no rows
                     Console.WriteLine("No rows found.");
                 }
 
-                // Finally close the connection
+                // close database connection
                 databaseConnection.Close();
             }
             catch (Exception ex)
             {
-                // Show any error message.
+                // error message database
                 MessageBox.Show(ex.Message);
             }
 
@@ -77,7 +75,7 @@ namespace Emotiq
         {
             string query = "INSERT INTO contactpersonen(`ID`, `voornaam`, `tv`, `achternaam`, `telefoonnummer`) VALUES (NULL, '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + telefoonnummer + "')";
             // Which could be translated manually to :t
-            // INSERT INTO user(`id`, `first_name`, `last_name`, `address`) VALUES (NULL, 'Bruce', 'Wayne', 'Wayne Manor')
+            // INSERT INTO user(`ID`, `voornaam`, `tussenvoegsel`, `achternaam`, `telefoonnummer`) VALUES (NULL, 'voornaam', 'tussenvoegsel', 'Wayne Manor')
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

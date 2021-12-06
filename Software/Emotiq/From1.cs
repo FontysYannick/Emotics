@@ -13,7 +13,9 @@ namespace Emotiq
 {
     public partial class Emotiq : Form
     {
-        Database db = new Database();
+        Dbopvragen dbopvragen = new Dbopvragen();
+        Dbverwijderen dbverwijderen = new Dbverwijderen();
+        Dbtoevoegencontact dbtoevoegen = new Dbtoevoegencontact();
         private string id;
 
         public Emotiq()
@@ -53,19 +55,14 @@ namespace Emotiq
         {
             if (emptyboxcheck())
             {
-                string voornaam = TBvoornaam.Text;
-                string tv = TBtussen.Text;
-                string achternaam = TBachternaam.Text;
-                string telefoon = TBtelefoon.Text;
-
-                db.toevoegen(voornaam, tv, achternaam, telefoon);
+                dbtoevoegen.toevoegen(TBvoornaam.Text, TBtussen.Text, TBachternaam.Text, TBtelefoon.Text);
                 clear();
             }    
         }
 
         private void BTNremove_Click(object sender, EventArgs e)
         {
-            db.verwijderen(id);
+            dbverwijderen.verwijderen(id);
             BTNadd.Enabled = true;
             BTNremove.Enabled = false;
             clear();
@@ -82,13 +79,13 @@ namespace Emotiq
             Listcontact.Items.Clear();
             BTNremove.Enabled = false;
 
-            List<ListViewItem> value = db.opvragen("emotietabel", 4);
+            List<ListViewItem> value = dbopvragen.opvragen(Dbopvragen.Tabel.emotietabel);
             foreach (var item in value)
             {
                 Listemotietabel.Items.Add(item);
             }
 
-            List<ListViewItem> contact = db.opvragen("contactpersonen", 5);
+            List<ListViewItem> contact = dbopvragen.opvragen(Dbopvragen.Tabel.contactpersonen);
             foreach (var item in contact)
             {
                 Listcontact.Items.Add(item);

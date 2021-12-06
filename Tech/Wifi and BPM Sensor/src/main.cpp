@@ -26,11 +26,13 @@ HttpClient client = HttpClient(wifi, server, 2435);
 
 int Signal; //signaal wat van hartslag sensor afkomt
 int BPM;  //map function voor BPM
+int gemBPM[60];
 
 int clientId = 0;
 
 int Second = 0;
 int Minute = 0;
+int Hour = 0;
 
 /*void registerArduino() {
   StaticJsonDocument<8> json;
@@ -156,6 +158,7 @@ void loop()
 	Serial.println("");
 
 	Second ++;
+	
 	delay(1000);
 	int gemBPM[60] = { };
 	int Count;

@@ -135,10 +135,9 @@ void loop()
 	}
 	
 	
-	if (Second > 60)
+	if (Second >= 60)
 	{
 		Second = 0;
-		Second ++;
 		Minute ++;
 
 		lcd.setCursor(14,1);
@@ -149,6 +148,14 @@ void loop()
 		Serial.print("Min : ");
 		Serial.println(Minute);
 	}
+	if (Minute > 9)
+	{
+		lcd.setCursor(11, 1);
+		lcd.print(Minute);
+		lcd.setCursor(13,1);
+		lcd.print(".");
+	}
+	
 	Serial.println("");
 	Second ++;
 	delay(1000);

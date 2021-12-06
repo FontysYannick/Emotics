@@ -6,6 +6,7 @@
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
 
+
 const int PulseSensorPurplePin = 0; //pin voor hartslag sensor
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
 
@@ -23,7 +24,7 @@ int status = WL_IDLE_STATUS; //Wifi status
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, server, 2435);
 
-int Signaal; //signaal wat van hartslag sensor afkomt
+int Signal; //signaal wat van hartslag sensor afkomt
 int BPM;  //map function voor BPM
 
 int clientId = 0;
@@ -88,8 +89,11 @@ void setup()
  	Serial.println(WiFi.localIP());
 	delay(1200);
 
-	lcd.setCursor(12,1);
-	lcd.print("0.00");
+	lcd.setCursor(0, 1);
+	lcd.print("Time past:  0.00");
+	lcd.setCursor(13,1);
+	Second = 0;
+	Minute = 0;
 
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
@@ -101,39 +105,25 @@ void setup()
 
 void loop()
 {
-	Signaal = analogRead(PulseSensorPurplePin);
-	BPM = map(Signaal, 0, 1000, 0, 100);
-	
-	Serial.print("BPM : ");
-	Serial.println(Signaal / 10);
+	Signal = analogRead(PulseSensorPurplePin);
+	BPM = map(Signal, 0, 1000, 0, 100);
 
 	lcd.setCursor(0, 0);
 	lcd.print("BPM <3: ");
-	lcd.print(BPM); // klopt
-	
-	lcd.setCursor(0, 1);
-	lcd.print("Time past: ");
-	lcd.setCursor(13,1); // klopt
-	
-	
+	lcd.print(BPM);
+
 	if (Second < 10)
 	{
 		lcd.setCursor(15,1);
 		lcd.print(Second);
 		lcd.setCursor(14,1);
 		lcd.print("0");
-
-		Serial.print("Sec : ");
-		Serial.println(Second);
 	}
-	else {
+	else 
+	{
 		lcd.setCursor(14,1);
-		lcd.print(Second);
-
-		Serial.print("Sec : ");
-		Serial.println(Second); // klopt
+		lcd.print(Second);	
 	}
-	
 	
 	if (Second >= 60)
 	{
@@ -144,10 +134,8 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
-
-		Serial.print("Min : ");
-		Serial.println(Minute);
 	}
+
 	if (Minute > 9)
 	{
 		lcd.setCursor(11, 1);
@@ -156,11 +144,31 @@ void loop()
 		lcd.print(".");
 	}
 	
+	Serial.print("Min : ");
+	Serial.println(Minute);
+
+	Serial.print("Sec : ");
+	Serial.println(Second);
+
+	Serial.print("BPM : ");
+	Serial.println(Signal / 10);
+
 	Serial.println("");
+
 	Second ++;
 	delay(1000);
-
-
+	int gemBPM[60] = { };
+	int Count;
+	int AVG = 0;
+	for (Count = 0; Count < 1; Count++)
+	{
+		gemBPM[Count] = BPM;
+		AVG = gemBPM[Count] / 60;
+		Serial.print("gemBPM : ");
+		Serial.println(AVG);
+		
+	}
+	
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
 	updateAmperage();

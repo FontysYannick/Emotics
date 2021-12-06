@@ -15,8 +15,7 @@ namespace Emotiq
         public void toevoegen(string voornaam, string tussenvoegsel, string achternaam, string telefoonnummer)
         {
             string query = "INSERT INTO contactpersonen(`ID`, `voornaam`, `tv`, `achternaam`, `telefoonnummer`) VALUES (NULL, '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + telefoonnummer + "')";
-            // Which could be translated manually to :t
-            // INSERT INTO user(`ID`, `voornaam`, `tussenvoegsel`, `achternaam`, `telefoonnummer`) VALUES (NULL, 'voornaam', 'tussenvoegsel', 'Wayne Manor')
+            // INSERT INTO user(`ID`, `voornaam`, `tussenvoegsel`, `achternaam`, `telefoonnummer`) VALUES (NULL, 'voornaam', 'tussenvoegsel', 'achternaam', 'telefoonnummer')
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

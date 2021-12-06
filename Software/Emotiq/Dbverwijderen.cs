@@ -14,7 +14,7 @@ namespace Emotiq
 
         public void verwijderen(string id)
         {
-            // Delete the item with ID 1
+            // Delete the item with ID
             string query = "DELETE FROM `contactpersonen` WHERE id = " + id;
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);

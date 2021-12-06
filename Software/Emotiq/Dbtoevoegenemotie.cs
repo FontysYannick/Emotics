@@ -15,7 +15,6 @@ namespace Emotiq
         public void toevoegen()
         {
             string query = "INSERT INTO emotie()";
-            // Which could be translated manually to :t
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

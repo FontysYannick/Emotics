@@ -42,7 +42,6 @@ namespace Emotiq
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ContactPersonen = new System.Windows.Forms.TabPage();
             this.BTNremove = new System.Windows.Forms.Button();
-            this.BTNupdate = new System.Windows.Forms.Button();
             this.BTNadd = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.TBtelefoon = new System.Windows.Forms.TextBox();
@@ -78,9 +77,10 @@ namespace Emotiq
             this.TabControl.Controls.Add(this.ContactPersonen);
             this.TabControl.Controls.Add(this.Instellingen);
             this.TabControl.Location = new System.Drawing.Point(1, 1);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(776, 1052);
+            this.TabControl.Size = new System.Drawing.Size(582, 855);
             this.TabControl.TabIndex = 0;
             // 
             // Home
@@ -88,10 +88,11 @@ namespace Emotiq
             this.Home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Home.BackgroundImage")));
             this.Home.Controls.Add(this.label2);
             this.Home.Controls.Add(this.label1);
-            this.Home.Location = new System.Drawing.Point(4, 25);
+            this.Home.Location = new System.Drawing.Point(4, 22);
+            this.Home.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Home.Name = "Home";
-            this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(768, 1023);
+            this.Home.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Home.Size = new System.Drawing.Size(574, 829);
             this.Home.TabIndex = 0;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
@@ -100,9 +101,10 @@ namespace Emotiq
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(75, 95);
+            this.label2.Location = new System.Drawing.Point(56, 77);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 22);
+            this.label2.Size = new System.Drawing.Size(125, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Hoe voelt u zich ?";
             // 
@@ -110,9 +112,10 @@ namespace Emotiq
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MV Boli", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 18);
+            this.label1.Location = new System.Drawing.Point(25, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(436, 52);
+            this.label1.Size = new System.Drawing.Size(349, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Goedemiddag Matthijs";
             // 
@@ -120,10 +123,11 @@ namespace Emotiq
             // 
             this.Overzicht.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
             this.Overzicht.Controls.Add(this.Listemotietabel);
-            this.Overzicht.Location = new System.Drawing.Point(4, 25);
+            this.Overzicht.Location = new System.Drawing.Point(4, 22);
+            this.Overzicht.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Overzicht.Name = "Overzicht";
-            this.Overzicht.Padding = new System.Windows.Forms.Padding(3);
-            this.Overzicht.Size = new System.Drawing.Size(768, 1023);
+            this.Overzicht.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Overzicht.Size = new System.Drawing.Size(574, 829);
             this.Overzicht.TabIndex = 1;
             this.Overzicht.Text = "Overzicht";
             this.Overzicht.UseVisualStyleBackColor = true;
@@ -140,8 +144,9 @@ namespace Emotiq
             this.O2});
             this.Listemotietabel.HideSelection = false;
             this.Listemotietabel.Location = new System.Drawing.Point(0, 0);
+            this.Listemotietabel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Listemotietabel.Name = "Listemotietabel";
-            this.Listemotietabel.Size = new System.Drawing.Size(800, 597);
+            this.Listemotietabel.Size = new System.Drawing.Size(601, 486);
             this.Listemotietabel.TabIndex = 2;
             this.Listemotietabel.UseCompatibleStateImageBehavior = false;
             this.Listemotietabel.View = System.Windows.Forms.View.Details;
@@ -166,7 +171,6 @@ namespace Emotiq
             // 
             this.ContactPersonen.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
             this.ContactPersonen.Controls.Add(this.BTNremove);
-            this.ContactPersonen.Controls.Add(this.BTNupdate);
             this.ContactPersonen.Controls.Add(this.BTNadd);
             this.ContactPersonen.Controls.Add(this.label6);
             this.ContactPersonen.Controls.Add(this.TBtelefoon);
@@ -177,38 +181,33 @@ namespace Emotiq
             this.ContactPersonen.Controls.Add(this.label3);
             this.ContactPersonen.Controls.Add(this.TBvoornaam);
             this.ContactPersonen.Controls.Add(this.Listcontact);
-            this.ContactPersonen.Location = new System.Drawing.Point(4, 25);
+            this.ContactPersonen.Location = new System.Drawing.Point(4, 22);
+            this.ContactPersonen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ContactPersonen.Name = "ContactPersonen";
-            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(3);
-            this.ContactPersonen.Size = new System.Drawing.Size(768, 1023);
+            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ContactPersonen.Size = new System.Drawing.Size(574, 829);
             this.ContactPersonen.TabIndex = 3;
             this.ContactPersonen.Text = "ContactPersonen";
             this.ContactPersonen.UseVisualStyleBackColor = true;
             // 
             // BTNremove
             // 
-            this.BTNremove.Location = new System.Drawing.Point(428, 714);
+            this.BTNremove.BackColor = System.Drawing.Color.Transparent;
+            this.BTNremove.Location = new System.Drawing.Point(300, 596);
+            this.BTNremove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNremove.Name = "BTNremove";
-            this.BTNremove.Size = new System.Drawing.Size(85, 31);
+            this.BTNremove.Size = new System.Drawing.Size(96, 48);
             this.BTNremove.TabIndex = 11;
             this.BTNremove.Text = "Remove";
-            this.BTNremove.UseVisualStyleBackColor = true;
+            this.BTNremove.UseVisualStyleBackColor = false;
             this.BTNremove.Click += new System.EventHandler(this.BTNremove_Click);
-            // 
-            // BTNupdate
-            // 
-            this.BTNupdate.Location = new System.Drawing.Point(337, 714);
-            this.BTNupdate.Name = "BTNupdate";
-            this.BTNupdate.Size = new System.Drawing.Size(85, 31);
-            this.BTNupdate.TabIndex = 10;
-            this.BTNupdate.Text = "Update";
-            this.BTNupdate.UseVisualStyleBackColor = true;
             // 
             // BTNadd
             // 
-            this.BTNadd.Location = new System.Drawing.Point(246, 714);
+            this.BTNadd.Location = new System.Drawing.Point(178, 596);
+            this.BTNadd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNadd.Name = "BTNadd";
-            this.BTNadd.Size = new System.Drawing.Size(85, 31);
+            this.BTNadd.Size = new System.Drawing.Size(96, 48);
             this.BTNadd.TabIndex = 9;
             this.BTNadd.Text = "Add";
             this.BTNadd.UseVisualStyleBackColor = true;
@@ -217,7 +216,9 @@ namespace Emotiq
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(563, 636);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(426, 537);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 17);
             this.label6.TabIndex = 8;
@@ -225,15 +226,18 @@ namespace Emotiq
             // 
             // TBtelefoon
             // 
-            this.TBtelefoon.Location = new System.Drawing.Point(566, 656);
+            this.TBtelefoon.Location = new System.Drawing.Point(429, 553);
+            this.TBtelefoon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TBtelefoon.Name = "TBtelefoon";
-            this.TBtelefoon.Size = new System.Drawing.Size(140, 22);
+            this.TBtelefoon.Size = new System.Drawing.Size(106, 20);
             this.TBtelefoon.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(378, 636);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(287, 534);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 17);
             this.label5.TabIndex = 6;
@@ -241,15 +245,18 @@ namespace Emotiq
             // 
             // TBachternaam
             // 
-            this.TBachternaam.Location = new System.Drawing.Point(381, 656);
+            this.TBachternaam.Location = new System.Drawing.Point(290, 553);
+            this.TBachternaam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TBachternaam.Name = "TBachternaam";
-            this.TBachternaam.Size = new System.Drawing.Size(140, 22);
+            this.TBachternaam.Size = new System.Drawing.Size(106, 20);
             this.TBachternaam.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(243, 636);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(170, 534);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 17);
             this.label4.TabIndex = 4;
@@ -257,15 +264,18 @@ namespace Emotiq
             // 
             // TBtussen
             // 
-            this.TBtussen.Location = new System.Drawing.Point(246, 656);
+            this.TBtussen.Location = new System.Drawing.Point(172, 553);
+            this.TBtussen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TBtussen.Name = "TBtussen";
-            this.TBtussen.Size = new System.Drawing.Size(60, 22);
+            this.TBtussen.Size = new System.Drawing.Size(50, 20);
             this.TBtussen.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 636);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(43, 537);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 2;
@@ -273,9 +283,10 @@ namespace Emotiq
             // 
             // TBvoornaam
             // 
-            this.TBvoornaam.Location = new System.Drawing.Point(77, 656);
+            this.TBvoornaam.Location = new System.Drawing.Point(46, 553);
+            this.TBvoornaam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TBvoornaam.Name = "TBvoornaam";
-            this.TBvoornaam.Size = new System.Drawing.Size(140, 22);
+            this.TBvoornaam.Size = new System.Drawing.Size(106, 20);
             this.TBvoornaam.TabIndex = 1;
             // 
             // Listcontact
@@ -290,9 +301,10 @@ namespace Emotiq
             this.CLMachternaam,
             this.CLMtelefoon});
             this.Listcontact.HideSelection = false;
-            this.Listcontact.Location = new System.Drawing.Point(20, 22);
+            this.Listcontact.Location = new System.Drawing.Point(15, 18);
+            this.Listcontact.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Listcontact.Name = "Listcontact";
-            this.Listcontact.Size = new System.Drawing.Size(726, 438);
+            this.Listcontact.Size = new System.Drawing.Size(546, 468);
             this.Listcontact.TabIndex = 0;
             this.Listcontact.UseCompatibleStateImageBehavior = false;
             this.Listcontact.View = System.Windows.Forms.View.Details;
@@ -324,11 +336,12 @@ namespace Emotiq
             // Instellingen
             // 
             this.Instellingen.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
-            this.Instellingen.Location = new System.Drawing.Point(4, 25);
+            this.Instellingen.Location = new System.Drawing.Point(4, 22);
+            this.Instellingen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Instellingen.Name = "Instellingen";
-            this.Instellingen.Padding = new System.Windows.Forms.Padding(3);
+            this.Instellingen.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Instellingen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Instellingen.Size = new System.Drawing.Size(768, 1023);
+            this.Instellingen.Size = new System.Drawing.Size(574, 829);
             this.Instellingen.TabIndex = 2;
             this.Instellingen.Text = "Instellingen";
             this.Instellingen.UseVisualStyleBackColor = true;
@@ -356,15 +369,15 @@ namespace Emotiq
             // 
             // Emotiq
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(777, 1055);
+            this.ClientSize = new System.Drawing.Size(583, 687);
             this.Controls.Add(this.TabControl);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Emotiq";
-            this.Opacity = 0.1D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -410,7 +423,6 @@ namespace Emotiq
         private System.Windows.Forms.TextBox TBtussen;
         private System.Windows.Forms.Button BTNadd;
         private System.Windows.Forms.Button BTNremove;
-        private System.Windows.Forms.Button BTNupdate;
         private System.Windows.Forms.ColumnHeader CLMid;
     }
 }

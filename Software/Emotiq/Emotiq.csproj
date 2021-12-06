@@ -130,6 +130,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Background_emotie.png" />
   </ItemGroup>

@@ -78,7 +78,7 @@ void setup()
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
 	
-/*	while (status != WL_CONNECTED)
+	while (status != WL_CONNECTED)
   	{
    		Serial.print("Connecting to WiFi");
     	delay(200);
@@ -94,7 +94,7 @@ void setup()
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
 	delay(1200);
-*/
+
 	lcd.setCursor(0, 1);
 	lcd.print("Time past:  0.00");
 	lcd.setCursor(13,1);
@@ -151,7 +151,7 @@ void loop()
 		lcd.setCursor(13,1);
 		lcd.print(".");
 	}
-	
+
 	Serial.print("Min : ");
 	Serial.println(Minute);
 
@@ -164,7 +164,7 @@ void loop()
 	Serial.println("");
 
 	Second ++;
-	
+
 	delay(1000);
 	int gemBPM[60] = { };
 	int Count;
@@ -175,7 +175,6 @@ void loop()
 		AVG = gemBPM[Count] / 60;
 		Serial.print("gemBPM : ");
 		Serial.println(AVG);
-		
 	}
 
 	ButtonState = digitalRead(Button);
@@ -187,12 +186,12 @@ void loop()
 	if (SportModus == HIGH)
 	{
 		Serial.println("Sport Stand : ON");
-		// Add sending data to database here
 	}
 	else {
 		Serial.println("Sport Stand : OFF");
+		// Add sending data to database here
 	}
-	
+
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
 	updateAmperage();
@@ -211,7 +210,7 @@ void loop()
 		client.stop();
   }
   else {
-    
+
     Serial.println("--> connection failed\n");
   }*/
 }

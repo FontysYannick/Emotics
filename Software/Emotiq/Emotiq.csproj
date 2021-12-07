@@ -130,7 +130,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Logo zonder naam .ico" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Background_emotie.png" />
   </ItemGroup>

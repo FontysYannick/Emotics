@@ -93,7 +93,7 @@ namespace Emotiq
             this.Home.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Home.Size = new System.Drawing.Size(473, 618);
+            this.Home.Size = new System.Drawing.Size(573, 698);
             this.Home.TabIndex = 0;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@ namespace Emotiq
             this.Overzicht.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Overzicht.Name = "Overzicht";
             this.Overzicht.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Overzicht.Size = new System.Drawing.Size(768, 739);
+            this.Overzicht.Size = new System.Drawing.Size(573, 698);
             this.Overzicht.TabIndex = 1;
             this.Overzicht.Text = "Overzicht";
             this.Overzicht.UseVisualStyleBackColor = true;
@@ -143,10 +143,10 @@ namespace Emotiq
             this.Temp,
             this.O2});
             this.Listemotietabel.HideSelection = false;
-            this.Listemotietabel.Location = new System.Drawing.Point(0, 0);
+            this.Listemotietabel.Location = new System.Drawing.Point(8, 5);
             this.Listemotietabel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Listemotietabel.Name = "Listemotietabel";
-            this.Listemotietabel.Size = new System.Drawing.Size(800, 385);
+            this.Listemotietabel.Size = new System.Drawing.Size(551, 381);
             this.Listemotietabel.TabIndex = 2;
             this.Listemotietabel.UseCompatibleStateImageBehavior = false;
             this.Listemotietabel.View = System.Windows.Forms.View.Details;
@@ -194,7 +194,7 @@ namespace Emotiq
             // BTNremove
             // 
             this.BTNremove.BackColor = System.Drawing.Color.Transparent;
-            this.BTNremove.Location = new System.Drawing.Point(359, 388);
+            this.BTNremove.Location = new System.Drawing.Point(323, 549);
             this.BTNremove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTNremove.Name = "BTNremove";
             this.BTNremove.Size = new System.Drawing.Size(128, 59);
@@ -205,7 +205,7 @@ namespace Emotiq
             // 
             // BTNadd
             // 
-            this.BTNadd.Location = new System.Drawing.Point(196, 388);
+            this.BTNadd.Location = new System.Drawing.Point(323, 485);
             this.BTNadd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTNadd.Name = "BTNadd";
             this.BTNadd.Size = new System.Drawing.Size(128, 59);
@@ -217,73 +217,73 @@ namespace Emotiq
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(59, 388);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(124, 593);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 20);
+            this.label6.Size = new System.Drawing.Size(138, 20);
             this.label6.TabIndex = 8;
             this.label6.Text = "Telefoonummer";
             // 
             // TBtelefoon
             // 
-            this.TBtelefoon.Location = new System.Drawing.Point(63, 408);
+            this.TBtelefoon.Location = new System.Drawing.Point(128, 614);
             this.TBtelefoon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TBtelefoon.Name = "TBtelefoon";
-            this.TBtelefoon.Size = new System.Drawing.Size(140, 22);
+            this.TBtelefoon.Size = new System.Drawing.Size(151, 22);
             this.TBtelefoon.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(342, 311);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(124, 545);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 20);
+            this.label5.Size = new System.Drawing.Size(109, 20);
             this.label5.TabIndex = 6;
             this.label5.Text = "Achternaam";
             // 
             // TBachternaam
             // 
-            this.TBachternaam.Location = new System.Drawing.Point(346, 335);
+            this.TBachternaam.Location = new System.Drawing.Point(128, 567);
             this.TBachternaam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TBachternaam.Name = "TBachternaam";
-            this.TBachternaam.Size = new System.Drawing.Size(140, 22);
+            this.TBachternaam.Size = new System.Drawing.Size(151, 22);
             this.TBachternaam.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(186, 311);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(124, 494);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 20);
+            this.label4.Size = new System.Drawing.Size(134, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Tussenvoegsel";
             // 
             // TBtussen
             // 
-            this.TBtussen.Location = new System.Drawing.Point(188, 335);
+            this.TBtussen.Location = new System.Drawing.Point(125, 517);
             this.TBtussen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TBtussen.Name = "TBtussen";
-            this.TBtussen.Size = new System.Drawing.Size(65, 22);
+            this.TBtussen.Size = new System.Drawing.Size(153, 22);
             this.TBtussen.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 315);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(124, 446);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 20);
+            this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Voornaam";
             // 
             // TBvoornaam
             // 
-            this.TBvoornaam.Location = new System.Drawing.Point(20, 335);
+            this.TBvoornaam.Location = new System.Drawing.Point(128, 465);
             this.TBvoornaam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TBvoornaam.Name = "TBvoornaam";
-            this.TBvoornaam.Size = new System.Drawing.Size(140, 22);
+            this.TBvoornaam.Size = new System.Drawing.Size(151, 22);
             this.TBvoornaam.TabIndex = 1;
             // 
             // Listcontact
@@ -298,10 +298,10 @@ namespace Emotiq
             this.CLMachternaam,
             this.CLMtelefoon});
             this.Listcontact.HideSelection = false;
-            this.Listcontact.Location = new System.Drawing.Point(20, 22);
+            this.Listcontact.Location = new System.Drawing.Point(8, 5);
             this.Listcontact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Listcontact.Name = "Listcontact";
-            this.Listcontact.Size = new System.Drawing.Size(532, 322);
+            this.Listcontact.Size = new System.Drawing.Size(551, 374);
             this.Listcontact.TabIndex = 0;
             this.Listcontact.UseCompatibleStateImageBehavior = false;
             this.Listcontact.View = System.Windows.Forms.View.Details;
@@ -339,7 +339,7 @@ namespace Emotiq
             this.Instellingen.Name = "Instellingen";
             this.Instellingen.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Instellingen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Instellingen.Size = new System.Drawing.Size(768, 739);
+            this.Instellingen.Size = new System.Drawing.Size(573, 698);
             this.Instellingen.TabIndex = 2;
             this.Instellingen.Text = "Instellingen";
             this.Instellingen.UseVisualStyleBackColor = true;
@@ -370,8 +370,9 @@ namespace Emotiq
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(582, 733);
+            this.ClientSize = new System.Drawing.Size(581, 734);
             this.Controls.Add(this.TabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

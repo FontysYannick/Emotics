@@ -61,10 +61,12 @@ namespace Emotiq
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.emotiebar = new System.Windows.Forms.TrackBar();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.Overzicht.SuspendLayout();
             this.ContactPersonen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -87,6 +89,7 @@ namespace Emotiq
             // 
             this.Home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Home.BackgroundImage")));
             this.Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Home.Controls.Add(this.emotiebar);
             this.Home.Controls.Add(this.label2);
             this.Home.Controls.Add(this.label1);
             this.Home.Location = new System.Drawing.Point(4, 25);
@@ -365,6 +368,14 @@ namespace Emotiq
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
             // 
+            // emotiebar
+            // 
+            this.emotiebar.Location = new System.Drawing.Point(42, 174);
+            this.emotiebar.Name = "emotiebar";
+            this.emotiebar.Size = new System.Drawing.Size(466, 56);
+            this.emotiebar.TabIndex = 3;
+            this.emotiebar.ValueChanged += new System.EventHandler(this.emotiebar_ValueChanged);
+            // 
             // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -386,6 +397,7 @@ namespace Emotiq
             this.Overzicht.ResumeLayout(false);
             this.ContactPersonen.ResumeLayout(false);
             this.ContactPersonen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,6 +435,7 @@ namespace Emotiq
         private System.Windows.Forms.Button BTNadd;
         private System.Windows.Forms.Button BTNremove;
         private System.Windows.Forms.ColumnHeader CLMid;
+        private System.Windows.Forms.TrackBar emotiebar;
     }
 }
 

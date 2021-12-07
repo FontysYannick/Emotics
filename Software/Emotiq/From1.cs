@@ -114,5 +114,10 @@ namespace Emotiq
                 return true;
             }
         }
+
+        private void emotiebar_ValueChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("value : " + emotiebar.Value.ToString());
+        }
     }
 }

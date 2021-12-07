@@ -32,6 +32,7 @@ namespace Emotiq
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Emotiq));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.emotiebar = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Overzicht = new System.Windows.Forms.TabPage();
@@ -61,12 +62,11 @@ namespace Emotiq
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.emotiebar = new System.Windows.Forms.TrackBar();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).BeginInit();
             this.Overzicht.SuspendLayout();
             this.ContactPersonen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -100,6 +100,18 @@ namespace Emotiq
             this.Home.TabIndex = 0;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
+            // 
+            // emotiebar
+            // 
+            this.emotiebar.LargeChange = 2;
+            this.emotiebar.Location = new System.Drawing.Point(42, 174);
+            this.emotiebar.Maximum = 5;
+            this.emotiebar.Minimum = 1;
+            this.emotiebar.Name = "emotiebar";
+            this.emotiebar.Size = new System.Drawing.Size(466, 56);
+            this.emotiebar.TabIndex = 3;
+            this.emotiebar.Value = 3;
+            this.emotiebar.ValueChanged += new System.EventHandler(this.emotiebar_ValueChanged);
             // 
             // label2
             // 
@@ -368,14 +380,6 @@ namespace Emotiq
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
             // 
-            // emotiebar
-            // 
-            this.emotiebar.Location = new System.Drawing.Point(42, 174);
-            this.emotiebar.Name = "emotiebar";
-            this.emotiebar.Size = new System.Drawing.Size(466, 56);
-            this.emotiebar.TabIndex = 3;
-            this.emotiebar.ValueChanged += new System.EventHandler(this.emotiebar_ValueChanged);
-            // 
             // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -394,10 +398,10 @@ namespace Emotiq
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).EndInit();
             this.Overzicht.ResumeLayout(false);
             this.ContactPersonen.ResumeLayout(false);
             this.ContactPersonen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emotiebar)).EndInit();
             this.ResumeLayout(false);
 
         }

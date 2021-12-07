@@ -34,6 +34,10 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
+const int Button = "PinNMR"; // voor sportstand
+int ButtonState = 0; // voor sportstand
+bool direction = false; // voor sportstand
+
 /*void registerArduino() {
   StaticJsonDocument<8> json;
 
@@ -101,6 +105,8 @@ void setup()
 	{
 		registerArduino();
 	}*/
+
+	pinMode(Button, INPUT); //voor sportstand
 }
 
 
@@ -171,6 +177,15 @@ void loop()
 		Serial.println(AVG);
 		
 	}
+
+	ButtonState = digitalRead(Button);
+
+	if (ButtonState == LOW) 
+	{
+ 		direction = !direction;
+	}
+  		Serial.print("Sport Stand : ");
+  		Serial.println(direction);
 	
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{

@@ -34,13 +34,13 @@ namespace Emotiq
             this.Home = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Overzicht = new System.Windows.Forms.TabPage();
+            this.Graph = new System.Windows.Forms.TabPage();
             this.Listemotietabel = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BPM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Temp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.O2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ContactPersonen = new System.Windows.Forms.TabPage();
+            this.Contact = new System.Windows.Forms.TabPage();
             this.BTNremove = new System.Windows.Forms.Button();
             this.BTNadd = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,15 +57,18 @@ namespace Emotiq
             this.CLMtussen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CLMachternaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CLMtelefoon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Instellingen = new System.Windows.Forms.TabPage();
+            this.Settings = new System.Windows.Forms.TabPage();
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.label7 = new System.Windows.Forms.Label();
+            this.LBemotion = new System.Windows.Forms.Label();
+            this.LBquote = new System.Windows.Forms.Label();
+            this.LBtip = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
-            this.Overzicht.SuspendLayout();
-            this.ContactPersonen.SuspendLayout();
+            this.Graph.SuspendLayout();
+            this.Contact.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -74,9 +77,9 @@ namespace Emotiq
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.Home);
-            this.TabControl.Controls.Add(this.Overzicht);
-            this.TabControl.Controls.Add(this.ContactPersonen);
-            this.TabControl.Controls.Add(this.Instellingen);
+            this.TabControl.Controls.Add(this.Graph);
+            this.TabControl.Controls.Add(this.Contact);
+            this.TabControl.Controls.Add(this.Settings);
             this.TabControl.Location = new System.Drawing.Point(1, 1);
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabControl.Name = "TabControl";
@@ -88,6 +91,9 @@ namespace Emotiq
             // 
             this.Home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Home.BackgroundImage")));
             this.Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Home.Controls.Add(this.LBquote);
+            this.Home.Controls.Add(this.LBtip);
+            this.Home.Controls.Add(this.LBemotion);
             this.Home.Controls.Add(this.label7);
             this.Home.Controls.Add(this.label2);
             this.Home.Controls.Add(this.label1);
@@ -97,7 +103,7 @@ namespace Emotiq
             this.Home.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Home.Size = new System.Drawing.Size(573, 698);
             this.Home.TabIndex = 0;
-            this.Home.Text = "Home";
+            this.Home.Text = "       Home       ";
             this.Home.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -120,19 +126,19 @@ namespace Emotiq
             this.label1.TabIndex = 1;
             this.label1.Text = "Goodday Matthijs";
             // 
-            // Overzicht
+            // Graph
             // 
-            this.Overzicht.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
-            this.Overzicht.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Overzicht.Controls.Add(this.Listemotietabel);
-            this.Overzicht.Location = new System.Drawing.Point(4, 25);
-            this.Overzicht.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Overzicht.Name = "Overzicht";
-            this.Overzicht.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Overzicht.Size = new System.Drawing.Size(573, 698);
-            this.Overzicht.TabIndex = 1;
-            this.Overzicht.Text = "Overzicht";
-            this.Overzicht.UseVisualStyleBackColor = true;
+            this.Graph.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
+            this.Graph.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Graph.Controls.Add(this.Listemotietabel);
+            this.Graph.Location = new System.Drawing.Point(4, 25);
+            this.Graph.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Graph.Name = "Graph";
+            this.Graph.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Graph.Size = new System.Drawing.Size(573, 698);
+            this.Graph.TabIndex = 1;
+            this.Graph.Text = "       Graph       ";
+            this.Graph.UseVisualStyleBackColor = true;
             // 
             // Listemotietabel
             // 
@@ -169,29 +175,29 @@ namespace Emotiq
             // 
             this.O2.Text = "O2";
             // 
-            // ContactPersonen
+            // Contact
             // 
-            this.ContactPersonen.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
-            this.ContactPersonen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ContactPersonen.Controls.Add(this.BTNremove);
-            this.ContactPersonen.Controls.Add(this.BTNadd);
-            this.ContactPersonen.Controls.Add(this.label6);
-            this.ContactPersonen.Controls.Add(this.TBtelefoon);
-            this.ContactPersonen.Controls.Add(this.label5);
-            this.ContactPersonen.Controls.Add(this.TBachternaam);
-            this.ContactPersonen.Controls.Add(this.label4);
-            this.ContactPersonen.Controls.Add(this.TBtussen);
-            this.ContactPersonen.Controls.Add(this.label3);
-            this.ContactPersonen.Controls.Add(this.TBvoornaam);
-            this.ContactPersonen.Controls.Add(this.Listcontact);
-            this.ContactPersonen.Location = new System.Drawing.Point(4, 25);
-            this.ContactPersonen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ContactPersonen.Name = "ContactPersonen";
-            this.ContactPersonen.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ContactPersonen.Size = new System.Drawing.Size(573, 698);
-            this.ContactPersonen.TabIndex = 3;
-            this.ContactPersonen.Text = "ContactPersonen";
-            this.ContactPersonen.UseVisualStyleBackColor = true;
+            this.Contact.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
+            this.Contact.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Contact.Controls.Add(this.BTNremove);
+            this.Contact.Controls.Add(this.BTNadd);
+            this.Contact.Controls.Add(this.label6);
+            this.Contact.Controls.Add(this.TBtelefoon);
+            this.Contact.Controls.Add(this.label5);
+            this.Contact.Controls.Add(this.TBachternaam);
+            this.Contact.Controls.Add(this.label4);
+            this.Contact.Controls.Add(this.TBtussen);
+            this.Contact.Controls.Add(this.label3);
+            this.Contact.Controls.Add(this.TBvoornaam);
+            this.Contact.Controls.Add(this.Listcontact);
+            this.Contact.Location = new System.Drawing.Point(4, 25);
+            this.Contact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Contact.Name = "Contact";
+            this.Contact.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Contact.Size = new System.Drawing.Size(573, 698);
+            this.Contact.TabIndex = 3;
+            this.Contact.Text = "       Contact       ";
+            this.Contact.UseVisualStyleBackColor = true;
             // 
             // BTNremove
             // 
@@ -332,19 +338,19 @@ namespace Emotiq
             this.CLMtelefoon.Text = "Telefoonnummer";
             this.CLMtelefoon.Width = 117;
             // 
-            // Instellingen
+            // Settings
             // 
-            this.Instellingen.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
-            this.Instellingen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Instellingen.Location = new System.Drawing.Point(4, 25);
-            this.Instellingen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Instellingen.Name = "Instellingen";
-            this.Instellingen.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Instellingen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Instellingen.Size = new System.Drawing.Size(573, 698);
-            this.Instellingen.TabIndex = 2;
-            this.Instellingen.Text = "Instellingen";
-            this.Instellingen.UseVisualStyleBackColor = true;
+            this.Settings.BackgroundImage = global::Emotiq.Properties.Resources.Background_emotie;
+            this.Settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Settings.Location = new System.Drawing.Point(4, 25);
+            this.Settings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Settings.Name = "Settings";
+            this.Settings.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Settings.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Settings.Size = new System.Drawing.Size(573, 698);
+            this.Settings.TabIndex = 2;
+            this.Settings.Text = "       Settings       ";
+            this.Settings.UseVisualStyleBackColor = true;
             // 
             // mySqlDataAdapter2
             // 
@@ -378,6 +384,34 @@ namespace Emotiq
             this.label7.TabIndex = 3;
             this.label7.Text = "The emotion we are picking up";
             // 
+            // LBemotion
+            // 
+            this.LBemotion.AutoSize = true;
+            this.LBemotion.Font = new System.Drawing.Font("Modern No. 20", 26F);
+            this.LBemotion.Location = new System.Drawing.Point(208, 335);
+            this.LBemotion.Name = "LBemotion";
+            this.LBemotion.Size = new System.Drawing.Size(138, 45);
+            this.LBemotion.TabIndex = 4;
+            this.LBemotion.Text = "Happy";
+            // 
+            // LBquote
+            // 
+            this.LBquote.AutoSize = true;
+            this.LBquote.Location = new System.Drawing.Point(57, 507);
+            this.LBquote.Name = "LBquote";
+            this.LBquote.Size = new System.Drawing.Size(47, 17);
+            this.LBquote.TabIndex = 8;
+            this.LBquote.Text = "Quote";
+            // 
+            // LBtip
+            // 
+            this.LBtip.AutoSize = true;
+            this.LBtip.Location = new System.Drawing.Point(57, 415);
+            this.LBtip.Name = "LBtip";
+            this.LBtip.Size = new System.Drawing.Size(28, 17);
+            this.LBtip.TabIndex = 7;
+            this.LBtip.Text = "Tip";
+            // 
             // Emotiq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -396,9 +430,9 @@ namespace Emotiq
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
-            this.Overzicht.ResumeLayout(false);
-            this.ContactPersonen.ResumeLayout(false);
-            this.ContactPersonen.PerformLayout();
+            this.Graph.ResumeLayout(false);
+            this.Contact.ResumeLayout(false);
+            this.Contact.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -408,8 +442,8 @@ namespace Emotiq
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Home;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage Overzicht;
-        private System.Windows.Forms.TabPage Instellingen;
+        private System.Windows.Forms.TabPage Graph;
+        private System.Windows.Forms.TabPage Settings;
         private System.Windows.Forms.Label label2;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter2;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter3;
@@ -418,7 +452,7 @@ namespace Emotiq
         private System.Windows.Forms.ColumnHeader BPM;
         private System.Windows.Forms.ColumnHeader Temp;
         private System.Windows.Forms.ColumnHeader O2;
-        private System.Windows.Forms.TabPage ContactPersonen;
+        private System.Windows.Forms.TabPage Contact;
         private System.Windows.Forms.ListView Listcontact;
         private System.Windows.Forms.ColumnHeader CLMvoornaam;
         private System.Windows.Forms.ColumnHeader CLMtussen;
@@ -437,6 +471,9 @@ namespace Emotiq
         private System.Windows.Forms.Button BTNremove;
         private System.Windows.Forms.ColumnHeader CLMid;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LBemotion;
+        private System.Windows.Forms.Label LBquote;
+        private System.Windows.Forms.Label LBtip;
     }
 }
 

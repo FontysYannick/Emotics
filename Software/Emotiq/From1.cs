@@ -35,7 +35,7 @@ namespace Emotiq
             if (Listcontact.SelectedItems.Count > 0)
             {
                 ListViewItem item = Listcontact.SelectedItems[0];
-                id = item.SubItems[0].Text;
+                id = item.SubItems[0].Text  
                 TBvoornaam.Text = item.SubItems[1].Text;
                 TBtussen.Text = item.SubItems[2].Text;
                 TBachternaam.Text = item.SubItems[3].Text;

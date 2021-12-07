@@ -13,9 +13,9 @@ namespace Emotiq
 {
     public partial class Emotiq : Form
     {
-        Dbopvragen dbopvragen = new Dbopvragen();
-        Dbverwijderen dbverwijderen = new Dbverwijderen();
-        Dbtoevoegencontact dbtoevoegen = new Dbtoevoegencontact();
+        DBselect dbselect = new DBselect();
+        DBdelete dbdelete = new DBdelete();
+        DBaddcontact dbadd = new DBaddcontact();
         private string id;
 
         public Emotiq()
@@ -35,19 +35,19 @@ namespace Emotiq
             if (Listcontact.SelectedItems.Count > 0)
             {
                 ListViewItem item = Listcontact.SelectedItems[0];
-                id = item.SubItems[0].Text  
-                TBvoornaam.Text = item.SubItems[1].Text;
-                TBtussen.Text = item.SubItems[2].Text;
-                TBachternaam.Text = item.SubItems[3].Text;
-                TBtelefoon.Text = item.SubItems[4].Text;
+                id = item.SubItems[0].Text;  
+                TBfirstname.Text = item.SubItems[1].Text;
+                TBprefix.Text = item.SubItems[2].Text;
+                TBlastname.Text = item.SubItems[3].Text;
+                TBphonenumber.Text = item.SubItems[4].Text;
             }
             else
             {
                 BTNadd.Enabled = true;
-                TBvoornaam.Text = string.Empty;
-                TBtussen.Text = string.Empty;
-                TBachternaam.Text = string.Empty;
-                TBtelefoon.Text = string.Empty;
+                TBfirstname.Text = string.Empty;
+                TBprefix.Text = string.Empty;
+                TBlastname.Text = string.Empty;
+                TBphonenumber.Text = string.Empty;
             }
         }
 
@@ -55,14 +55,14 @@ namespace Emotiq
         {
             if (emptyboxcheck())
             {
-                dbtoevoegen.toevoegen(TBvoornaam.Text, TBtussen.Text, TBachternaam.Text, TBtelefoon.Text);
+                dbadd.Add(TBfirstname.Text, TBprefix.Text, TBlastname.Text, TBphonenumber.Text);
                 clear();
             }    
         }
 
         private void BTNremove_Click(object sender, EventArgs e)
         {
-            dbverwijderen.verwijderen(id);
+            dbdelete.Delete(id);
             BTNadd.Enabled = true;
             BTNremove.Enabled = false;
             clear();
@@ -70,22 +70,22 @@ namespace Emotiq
 
         private void clear() 
         {
-            TBvoornaam.Text = "";
-            TBtussen.Text = "";
-            TBachternaam.Text = "";
-            TBtelefoon.Text = "";
+            TBfirstname.Text = "";
+            TBprefix.Text = "";
+            TBlastname.Text = "";
+            TBphonenumber.Text = "";
 
             Listemotietabel.Items.Clear();
             Listcontact.Items.Clear();
             BTNremove.Enabled = false;
 
-            List<ListViewItem> value = dbopvragen.opvragen(Dbopvragen.Tabel.sensorvalues);
+            List<ListViewItem> value = dbselect.Select(DBselect.Tabel.sensorvalues);
             foreach (var item in value)
             {
                 Listemotietabel.Items.Add(item);
             }
 
-            List<ListViewItem> contact = dbopvragen.opvragen(Dbopvragen.Tabel.contacts);
+            List<ListViewItem> contact = dbselect.Select(DBselect.Tabel.contacts);
             foreach (var item in contact)
             {
                 Listcontact.Items.Add(item);
@@ -94,19 +94,19 @@ namespace Emotiq
 
         private bool emptyboxcheck()
         {
-            if (String.IsNullOrEmpty(TBvoornaam.Text))
+            if (String.IsNullOrEmpty(TBfirstname.Text))
             {
-                MessageBox.Show("Vul alle velden");
+                MessageBox.Show("Fill in all required fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(TBachternaam.Text))
+            else if (String.IsNullOrEmpty(TBlastname.Text))
             {
-                MessageBox.Show("Vul alle velden");
+                MessageBox.Show("Fill in all required fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (String.IsNullOrEmpty(TBtelefoon.Text))
+            else if (String.IsNullOrEmpty(TBphonenumber.Text))
             {
-                MessageBox.Show("Vul alle velden");
+                MessageBox.Show("Fill in all required fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else

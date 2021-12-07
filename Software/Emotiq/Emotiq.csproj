@@ -89,10 +89,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dbopvragen.cs" />
-    <Compile Include="Dbtoevoegencontact.cs" />
-    <Compile Include="Dbtoevoegenemotie.cs" />
-    <Compile Include="Dbverwijderen.cs" />
+    <Compile Include="DBselect.cs" />
+    <Compile Include="DBaddcontact.cs" />
+    <Compile Include="DBaddemotion.cs" />
+    <Compile Include="DBdelete.cs" />
     <Compile Include="From1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Emotiq
 {
-    class Dbopvragen
+    class DBselect
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
@@ -20,12 +20,11 @@ namespace Emotiq
             tipsquotes = 4
         };
 
-        public List<ListViewItem> opvragen(Tabel tabelnaam)
+        public List<ListViewItem> Select(Tabel tabelname)
         {
-            string Tabelnaam = tabelnaam.ToString();
-            string query = "SELECT * FROM " + Tabelnaam;
+            string Tabelname = tabelname.ToString();
+            string query = "SELECT * FROM " + Tabelname;
             List<ListViewItem> items = new List<ListViewItem>();
-
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = 60;
@@ -45,31 +44,21 @@ namespace Emotiq
 
                     while (reader.Read())
                     {
-                        
-                        // ID 0, BPM 1, Temp 2, O2 3
-                        // Do something with every received database ROW
-                        if ((int)tabelnaam == 5)
+                        if ((int)tabelname == 5)
                         {
                             string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) };
                             Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3) + " - " + reader.GetString(4));
                             var listViewItem = new ListViewItem(row);
                             items.Add(listViewItem);
                         }
-                        else if ((int)tabelnaam == 4)
+                        else if ((int)tabelname == 4)
                         {
                             string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3) };
                             Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3));
                             var listViewItem = new ListViewItem(row);
                             items.Add(listViewItem);
                         }
-                        else if ((int)tabelnaam == 3)
-                        {
-                            string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2) };
-                            Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2));
-                            var listViewItem = new ListViewItem(row);
-                            items.Add(listViewItem);
-                        }
-                        else if (true)
+                        else if ((int)tabelname == 2)
                         {
                             string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2) };
                             Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2));

@@ -32,6 +32,10 @@ namespace Emotiq
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Emotiq));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.LBquote = new System.Windows.Forms.Label();
+            this.LBtip = new System.Windows.Forms.Label();
+            this.LBemotion = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Graph = new System.Windows.Forms.TabPage();
@@ -44,27 +48,23 @@ namespace Emotiq
             this.BTNremove = new System.Windows.Forms.Button();
             this.BTNadd = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.TBtelefoon = new System.Windows.Forms.TextBox();
+            this.TBphonenumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TBachternaam = new System.Windows.Forms.TextBox();
+            this.TBlastname = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TBtussen = new System.Windows.Forms.TextBox();
+            this.TBprefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TBvoornaam = new System.Windows.Forms.TextBox();
+            this.TBfirstname = new System.Windows.Forms.TextBox();
             this.Listcontact = new System.Windows.Forms.ListView();
             this.CLMid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CLMvoornaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CLMtussen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CLMachternaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CLMtelefoon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMFirstname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMPrefix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMLastname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CLMPhonenumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Settings = new System.Windows.Forms.TabPage();
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.label7 = new System.Windows.Forms.Label();
-            this.LBemotion = new System.Windows.Forms.Label();
-            this.LBquote = new System.Windows.Forms.Label();
-            this.LBtip = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.Graph.SuspendLayout();
@@ -105,6 +105,45 @@ namespace Emotiq
             this.Home.TabIndex = 0;
             this.Home.Text = "       Home       ";
             this.Home.UseVisualStyleBackColor = true;
+            // 
+            // LBquote
+            // 
+            this.LBquote.AutoSize = true;
+            this.LBquote.Location = new System.Drawing.Point(57, 507);
+            this.LBquote.Name = "LBquote";
+            this.LBquote.Size = new System.Drawing.Size(47, 17);
+            this.LBquote.TabIndex = 8;
+            this.LBquote.Text = "Quote";
+            // 
+            // LBtip
+            // 
+            this.LBtip.AutoSize = true;
+            this.LBtip.Location = new System.Drawing.Point(57, 415);
+            this.LBtip.Name = "LBtip";
+            this.LBtip.Size = new System.Drawing.Size(28, 17);
+            this.LBtip.TabIndex = 7;
+            this.LBtip.Text = "Tip";
+            // 
+            // LBemotion
+            // 
+            this.LBemotion.AutoSize = true;
+            this.LBemotion.Font = new System.Drawing.Font("Modern No. 20", 26F);
+            this.LBemotion.Location = new System.Drawing.Point(260, 358);
+            this.LBemotion.Name = "LBemotion";
+            this.LBemotion.Size = new System.Drawing.Size(85, 45);
+            this.LBemotion.TabIndex = 4;
+            this.LBemotion.Text = "Sad";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Modern No. 20", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(44, 293);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(480, 30);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Willy the wizard cast a spell you are now";
             // 
             // label2
             // 
@@ -182,13 +221,13 @@ namespace Emotiq
             this.Contact.Controls.Add(this.BTNremove);
             this.Contact.Controls.Add(this.BTNadd);
             this.Contact.Controls.Add(this.label6);
-            this.Contact.Controls.Add(this.TBtelefoon);
+            this.Contact.Controls.Add(this.TBphonenumber);
             this.Contact.Controls.Add(this.label5);
-            this.Contact.Controls.Add(this.TBachternaam);
+            this.Contact.Controls.Add(this.TBlastname);
             this.Contact.Controls.Add(this.label4);
-            this.Contact.Controls.Add(this.TBtussen);
+            this.Contact.Controls.Add(this.TBprefix);
             this.Contact.Controls.Add(this.label3);
-            this.Contact.Controls.Add(this.TBvoornaam);
+            this.Contact.Controls.Add(this.TBfirstname);
             this.Contact.Controls.Add(this.Listcontact);
             this.Contact.Location = new System.Drawing.Point(4, 25);
             this.Contact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -228,17 +267,17 @@ namespace Emotiq
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(124, 593);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 20);
+            this.label6.Size = new System.Drawing.Size(123, 20);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Telefoonummer";
+            this.label6.Text = "Phonenumber";
             // 
-            // TBtelefoon
+            // TBphonenumber
             // 
-            this.TBtelefoon.Location = new System.Drawing.Point(128, 614);
-            this.TBtelefoon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TBtelefoon.Name = "TBtelefoon";
-            this.TBtelefoon.Size = new System.Drawing.Size(151, 22);
-            this.TBtelefoon.TabIndex = 7;
+            this.TBphonenumber.Location = new System.Drawing.Point(128, 614);
+            this.TBphonenumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TBphonenumber.Name = "TBphonenumber";
+            this.TBphonenumber.Size = new System.Drawing.Size(151, 22);
+            this.TBphonenumber.TabIndex = 7;
             // 
             // label5
             // 
@@ -246,17 +285,17 @@ namespace Emotiq
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(124, 545);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 20);
+            this.label5.Size = new System.Drawing.Size(91, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Achternaam";
+            this.label5.Text = "Lastname";
             // 
-            // TBachternaam
+            // TBlastname
             // 
-            this.TBachternaam.Location = new System.Drawing.Point(128, 567);
-            this.TBachternaam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TBachternaam.Name = "TBachternaam";
-            this.TBachternaam.Size = new System.Drawing.Size(151, 22);
-            this.TBachternaam.TabIndex = 5;
+            this.TBlastname.Location = new System.Drawing.Point(128, 567);
+            this.TBlastname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TBlastname.Name = "TBlastname";
+            this.TBlastname.Size = new System.Drawing.Size(151, 22);
+            this.TBlastname.TabIndex = 5;
             // 
             // label4
             // 
@@ -264,17 +303,17 @@ namespace Emotiq
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(124, 494);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 20);
+            this.label4.Size = new System.Drawing.Size(58, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Tussenvoegsel";
+            this.label4.Text = "Prefix";
             // 
-            // TBtussen
+            // TBprefix
             // 
-            this.TBtussen.Location = new System.Drawing.Point(125, 517);
-            this.TBtussen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TBtussen.Name = "TBtussen";
-            this.TBtussen.Size = new System.Drawing.Size(153, 22);
-            this.TBtussen.TabIndex = 3;
+            this.TBprefix.Location = new System.Drawing.Point(125, 517);
+            this.TBprefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TBprefix.Name = "TBprefix";
+            this.TBprefix.Size = new System.Drawing.Size(153, 22);
+            this.TBprefix.TabIndex = 3;
             // 
             // label3
             // 
@@ -284,15 +323,15 @@ namespace Emotiq
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Voornaam";
+            this.label3.Text = "Firstname";
             // 
-            // TBvoornaam
+            // TBfirstname
             // 
-            this.TBvoornaam.Location = new System.Drawing.Point(128, 465);
-            this.TBvoornaam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TBvoornaam.Name = "TBvoornaam";
-            this.TBvoornaam.Size = new System.Drawing.Size(151, 22);
-            this.TBvoornaam.TabIndex = 1;
+            this.TBfirstname.Location = new System.Drawing.Point(128, 465);
+            this.TBfirstname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TBfirstname.Name = "TBfirstname";
+            this.TBfirstname.Size = new System.Drawing.Size(151, 22);
+            this.TBfirstname.TabIndex = 1;
             // 
             // Listcontact
             // 
@@ -301,10 +340,10 @@ namespace Emotiq
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Listcontact.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.CLMid,
-            this.CLMvoornaam,
-            this.CLMtussen,
-            this.CLMachternaam,
-            this.CLMtelefoon});
+            this.CLMFirstname,
+            this.CLMPrefix,
+            this.CLMLastname,
+            this.CLMPhonenumber});
             this.Listcontact.HideSelection = false;
             this.Listcontact.Location = new System.Drawing.Point(8, 5);
             this.Listcontact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -318,25 +357,26 @@ namespace Emotiq
             // CLMid
             // 
             this.CLMid.Text = "ID";
+            this.CLMid.Width = 40;
             // 
-            // CLMvoornaam
+            // CLMFirstname
             // 
-            this.CLMvoornaam.Text = "Voornaam";
-            this.CLMvoornaam.Width = 91;
+            this.CLMFirstname.Text = "Firstname";
+            this.CLMFirstname.Width = 100;
             // 
-            // CLMtussen
+            // CLMPrefix
             // 
-            this.CLMtussen.Text = "Tussenvoegsel";
+            this.CLMPrefix.Text = "Prefix";
             // 
-            // CLMachternaam
+            // CLMLastname
             // 
-            this.CLMachternaam.Text = "Achternaam";
-            this.CLMachternaam.Width = 87;
+            this.CLMLastname.Text = "Lastname";
+            this.CLMLastname.Width = 100;
             // 
-            // CLMtelefoon
+            // CLMPhonenumber
             // 
-            this.CLMtelefoon.Text = "Telefoonnummer";
-            this.CLMtelefoon.Width = 117;
+            this.CLMPhonenumber.Text = "Phonenumber";
+            this.CLMPhonenumber.Width = 120;
             // 
             // Settings
             // 
@@ -372,45 +412,6 @@ namespace Emotiq
             this.mySqlDataAdapter1.InsertCommand = null;
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Modern No. 20", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(112, 285);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(361, 30);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "The emotion we are picking up";
-            // 
-            // LBemotion
-            // 
-            this.LBemotion.AutoSize = true;
-            this.LBemotion.Font = new System.Drawing.Font("Modern No. 20", 26F);
-            this.LBemotion.Location = new System.Drawing.Point(208, 335);
-            this.LBemotion.Name = "LBemotion";
-            this.LBemotion.Size = new System.Drawing.Size(138, 45);
-            this.LBemotion.TabIndex = 4;
-            this.LBemotion.Text = "Happy";
-            // 
-            // LBquote
-            // 
-            this.LBquote.AutoSize = true;
-            this.LBquote.Location = new System.Drawing.Point(57, 507);
-            this.LBquote.Name = "LBquote";
-            this.LBquote.Size = new System.Drawing.Size(47, 17);
-            this.LBquote.TabIndex = 8;
-            this.LBquote.Text = "Quote";
-            // 
-            // LBtip
-            // 
-            this.LBtip.AutoSize = true;
-            this.LBtip.Location = new System.Drawing.Point(57, 415);
-            this.LBtip.Name = "LBtip";
-            this.LBtip.Size = new System.Drawing.Size(28, 17);
-            this.LBtip.TabIndex = 7;
-            this.LBtip.Text = "Tip";
             // 
             // Emotiq
             // 
@@ -454,19 +455,19 @@ namespace Emotiq
         private System.Windows.Forms.ColumnHeader O2;
         private System.Windows.Forms.TabPage Contact;
         private System.Windows.Forms.ListView Listcontact;
-        private System.Windows.Forms.ColumnHeader CLMvoornaam;
-        private System.Windows.Forms.ColumnHeader CLMtussen;
-        private System.Windows.Forms.ColumnHeader CLMachternaam;
-        private System.Windows.Forms.ColumnHeader CLMtelefoon;
+        private System.Windows.Forms.ColumnHeader CLMFirstname;
+        private System.Windows.Forms.ColumnHeader CLMPrefix;
+        private System.Windows.Forms.ColumnHeader CLMLastname;
+        private System.Windows.Forms.ColumnHeader CLMPhonenumber;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TBvoornaam;
+        private System.Windows.Forms.TextBox TBfirstname;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TBtelefoon;
+        private System.Windows.Forms.TextBox TBphonenumber;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TBachternaam;
+        private System.Windows.Forms.TextBox TBlastname;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TBtussen;
+        private System.Windows.Forms.TextBox TBprefix;
         private System.Windows.Forms.Button BTNadd;
         private System.Windows.Forms.Button BTNremove;
         private System.Windows.Forms.ColumnHeader CLMid;

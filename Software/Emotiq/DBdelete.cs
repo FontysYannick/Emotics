@@ -8,31 +8,33 @@ using System.Windows.Forms;
 
 namespace Emotiq
 {
-    class Dbtoevoegencontact
+    class DBdelete
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
-        public void toevoegen(string voornaam, string tussenvoegsel, string achternaam, string telefoonnummer)
+        public void Delete(string ID)
         {
-            string query = "INSERT INTO contactpersonen(`ID`, `voornaam`, `tv`, `achternaam`, `telefoonnummer`) VALUES (NULL, '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + telefoonnummer + "')";
-            // INSERT INTO user(`ID`, `voornaam`, `tussenvoegsel`, `achternaam`, `telefoonnummer`) VALUES (NULL, 'voornaam', 'tussenvoegsel', 'achternaam', 'telefoonnummer')
+            // Delete the item with ID
+            string query = "DELETE FROM `contacts` WHERE id = " + ID;
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = 60;
+            MySqlDataReader reader;
 
             try
             {
                 databaseConnection.Open();
-                MySqlDataReader myReader = commandDatabase.ExecuteReader();
+                reader = commandDatabase.ExecuteReader();
 
-                MessageBox.Show("User succesfully registered", "Registerd", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Succesfully deleted
+                MessageBox.Show("User succesfully deleted", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 databaseConnection.Close();
             }
             catch (Exception ex)
             {
-                // Show any error message.
+                // Ops, maybe the id doesn't exists ?
                 MessageBox.Show(ex.Message);
             }
         }

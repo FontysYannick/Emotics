@@ -8,33 +8,30 @@ using System.Windows.Forms;
 
 namespace Emotiq
 {
-    class Dbverwijderen
+    class DBaddcontact
     {
         private string connectionString = "datasource=studmysql01.fhict.local;username=dbi484020;password=Adm1n!Adm1n!;database=dbi484020;";
 
-        public void verwijderen(string id)
+        public void Add(string firstname, string prefix, string lastname, string phonenumber)
         {
-            // Delete the item with ID
-            string query = "DELETE FROM `contactpersonen` WHERE id = " + id;
+            string query = "INSERT INTO contacts(`ID`, `firstname`, `prefix`, `lastname`, `phonenumber`) VALUES (NULL, '" + firstname + "', '" + prefix + "', '" + lastname + "', '" + phonenumber + "')";
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = 60;
-            MySqlDataReader reader;
 
             try
             {
                 databaseConnection.Open();
-                reader = commandDatabase.ExecuteReader();
+                MySqlDataReader myReader = commandDatabase.ExecuteReader();
 
-                // Succesfully deleted
-                MessageBox.Show("User succesfully deleted", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("User succesfully registered", "Registerd", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 databaseConnection.Close();
             }
             catch (Exception ex)
             {
-                // Ops, maybe the id doesn't exists ?
+                // Show any error message.
                 MessageBox.Show(ex.Message);
             }
         }

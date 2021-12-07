@@ -14,8 +14,11 @@ unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
-char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+
+char SSID[] = "LAPTOP-TGTISK9B 1790";
+char PASS[] = "955Y1n51";
 
 const char server[] = "studmysql01.fhict.local"; //database
 
@@ -78,7 +81,7 @@ void setup()
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
 	
-/*	while (status != WL_CONNECTED)
+	while (status != WL_CONNECTED)
   	{
    		Serial.print("Connecting to WiFi");
     	delay(200);
@@ -94,7 +97,7 @@ void setup()
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
 	delay(1200);
-*/
+
 	lcd.setCursor(0, 1);
 	lcd.print("Time past:  0.00");
 	lcd.setCursor(13,1);
@@ -166,6 +169,7 @@ void loop()
 	Second ++;
 	
 	delay(1000);
+	/*
 	int gemBPM[60] = { };
 	int Count;
 	int AVG = 0;

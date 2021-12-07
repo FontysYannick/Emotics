@@ -79,13 +79,13 @@ namespace Emotiq
             Listcontact.Items.Clear();
             BTNremove.Enabled = false;
 
-            List<ListViewItem> value = dbopvragen.opvragen(Dbopvragen.Tabel.emotietabel);
+            List<ListViewItem> value = dbopvragen.opvragen(Dbopvragen.Tabel.sensorvalues);
             foreach (var item in value)
             {
                 Listemotietabel.Items.Add(item);
             }
 
-            List<ListViewItem> contact = dbopvragen.opvragen(Dbopvragen.Tabel.contactpersonen);
+            List<ListViewItem> contact = dbopvragen.opvragen(Dbopvragen.Tabel.contacts);
             foreach (var item in contact)
             {
                 Listcontact.Items.Add(item);

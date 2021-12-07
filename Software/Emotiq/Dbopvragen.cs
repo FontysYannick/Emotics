@@ -14,13 +14,13 @@ namespace Emotiq
 
         public enum Tabel
         {
-            contactpersonen = 5,
-            emotietabel = 4,
-            emotie = 2,
-            tipsquotes = 3
+            contacts = 5,
+            sensorvalues = 4,
+            emotion = 2,
+            tipsquotes = 4
         };
 
-        public List<ListViewItem> opvragen(Tabel tabelnaam/*string tabelnaam, int colloms*/)
+        public List<ListViewItem> opvragen(Tabel tabelnaam)
         {
             string Tabelnaam = tabelnaam.ToString();
             string query = "SELECT * FROM " + Tabelnaam;

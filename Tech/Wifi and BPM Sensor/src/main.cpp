@@ -154,7 +154,7 @@ void loop()
 		lcd.setCursor(13,1);
 		lcd.print(".");
 	}
-	
+
 	Serial.print("Min : ");
 	Serial.println(Minute);
 
@@ -167,7 +167,7 @@ void loop()
 	Serial.println("");
 
 	Second ++;
-	
+
 	delay(1000);
 	/*
 	int gemBPM[60] = { };
@@ -179,7 +179,6 @@ void loop()
 		AVG = gemBPM[Count] / 60;
 		Serial.print("gemBPM : ");
 		Serial.println(AVG);
-		
 	}
 
 	ButtonState = digitalRead(Button);
@@ -191,12 +190,12 @@ void loop()
 	if (SportModus == HIGH)
 	{
 		Serial.println("Sport Stand : ON");
-		// Add sending data to database here
 	}
 	else {
 		Serial.println("Sport Stand : OFF");
+		// Add sending data to database here
 	}
-	
+
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{
 	updateAmperage();
@@ -215,7 +214,7 @@ void loop()
 		client.stop();
   }
   else {
-    
+
     Serial.println("--> connection failed\n");
   }*/
 }

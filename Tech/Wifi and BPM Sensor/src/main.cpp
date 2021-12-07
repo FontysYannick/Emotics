@@ -34,9 +34,9 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
-const int Button = "PinNMR"; // voor sportstand
+const int Button = 9; // voor sportstand
 int ButtonState = 0; // voor sportstand
-bool direction = false; // voor sportstand
+bool SportModus = false; // voor sportstand
 
 /*void registerArduino() {
   StaticJsonDocument<8> json;
@@ -78,7 +78,7 @@ void setup()
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
 	
-	while (status != WL_CONNECTED)
+/*	while (status != WL_CONNECTED)
   	{
    		Serial.print("Connecting to WiFi");
     	delay(200);
@@ -94,7 +94,7 @@ void setup()
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
 	delay(1200);
-
+*/
 	lcd.setCursor(0, 1);
 	lcd.print("Time past:  0.00");
 	lcd.setCursor(13,1);
@@ -182,10 +182,16 @@ void loop()
 
 	if (ButtonState == LOW) 
 	{
- 		direction = !direction;
+ 		SportModus = !SportModus;
 	}
-  		Serial.print("Sport Stand : ");
-  		Serial.println(direction);
+	if (SportModus == HIGH)
+	{
+		Serial.println("Sport Stand : ON");
+		// Add sending data to database here
+	}
+	else {
+		Serial.println("Sport Stand : OFF");
+	}
 	
 	/*if (CurrentTime - PreviousTime >= EventTime)
 	{

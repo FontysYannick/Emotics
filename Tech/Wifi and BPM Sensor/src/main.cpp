@@ -207,7 +207,7 @@ void loop()
 		AVG = gemBPM[Count] / 60;
 		Serial.print("gemBPM : ");
 		Serial.println(AVG);
-	}
+	}*/
 
 	ButtonState = digitalRead(Button);
 
@@ -225,13 +225,12 @@ void loop()
 	}
 
 int MinuteBPM[60];
-int i = 0;
 int avgBPM;
-avgBPM = MinuteBPM[i] / 60;
+avgBPM = MinuteBPM[Second] / 60;
 
 if (BPM >= 0)
 {
-	MinuteBPM[i] = BPM;
+	MinuteBPM[Second] = BPM;
 }
 
 if (Second >= 60)

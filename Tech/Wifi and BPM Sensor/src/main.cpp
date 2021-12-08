@@ -38,6 +38,42 @@ const int Button = 9; // voor sportstand
 int ButtonState = 0; // voor sportstand
 bool SportModus = false; // voor sportstand
 
+
+
+void setup() 
+{
+	lcd.begin(16, 2, 32);
+	Serial.begin(9600);
+	
+	while (status != WL_CONNECTED)
+  	{
+   		Serial.print("Connecting to WiFi");
+    	delay(200);
+		Serial.print(".");
+		delay(200);
+		Serial.print(".");
+		delay(200);
+		Serial.println(".");
+		delay(200);
+		status = WiFi.begin(SSID, PASS);
+  	}
+
+ 	Serial.println("Connected to the WiFi network");
+ 	Serial.println(WiFi.localIP());
+	delay(1200);
+
+	lcd.setCursor(0, 1);
+	lcd.print("Time past:  0.00");
+	lcd.setCursor(13,1);
+	Second = 0;
+	Minute = 0;
+
+	
+
+	pinMode(Button, INPUT); //voor sportstand
+}
+
+void SendData() {
 /*void registerArduino() {
   StaticJsonDocument<8> json;
 
@@ -71,44 +107,36 @@ void updateAmperage() {
   	if(client.responseStatusCode() == 406) {
     	registerArduino();
   	}
-}*/
-
-void setup() 
-{
-	lcd.begin(16, 2, 32);
-	Serial.begin(9600);
-	
-	while (status != WL_CONNECTED)
-  	{
-   		Serial.print("Connecting to WiFi");
-    	delay(200);
-		Serial.print(".");
-		delay(200);
-		Serial.print(".");
-		delay(200);
-		Serial.println(".");
-		delay(200);
-		status = WiFi.begin(SSID, PASS);
-  	}
-
- 	Serial.println("Connected to the WiFi network");
- 	Serial.println(WiFi.localIP());
-	delay(1200);
-
-	lcd.setCursor(0, 1);
-	lcd.print("Time past:  0.00");
-	lcd.setCursor(13,1);
-	Second = 0;
-	Minute = 0;
-
-	/*if (CurrentTime - PreviousTime >= EventTime)
-	{
-		registerArduino();
-	}*/
-
-	pinMode(Button, INPUT); //voor sportstand
 }
 
+	if (CurrentTime - PreviousTime >= EventTime)
+	{
+		registerArduino();
+	}
+	
+	if (CurrentTime - PreviousTime >= EventTime)
+	{
+	updateAmperage();
+	client.print("Test");
+	}
+
+	if(client.connect(server, 3306)) {
+		client.print("GET /write_data.php?");
+		client.print("value=");
+		client.print(Signaal / 10);
+		client.println(" HTTP/1.1"); 
+		client.println("Host: 192.168.137.207");
+		client.println("Connection: close");
+		client.println();
+		client.println();
+		client.stop();
+  }
+  else {
+
+    Serial.println("--> connection failed\n");
+  }*/
+
+}
 
 
 void loop()
@@ -189,28 +217,23 @@ void loop()
 	}
 	else {
 		Serial.println("Sport Stand : OFF");
-		// Add sending data to database here
+		SendData();
 	}
 
-	/*if (CurrentTime - PreviousTime >= EventTime)
-	{
-	updateAmperage();
-	client.print("Test");
-	}
+int MinuteBPM[60];
+int i = 0;
+int avgBPM;
+avgBPM = MinuteBPM[i] / 60;
 
-	if(client.connect(server, 3306)) {
-		client.print("GET /write_data.php?");
-		client.print("value=");
-		client.print(Signaal / 10);
-		client.println(" HTTP/1.1"); 
-		client.println("Host: 192.168.137.207");
-		client.println("Connection: close");
-		client.println();
-		client.println();
-		client.stop();
-  }
-  else {
+if (BPM >= 0)
+{
+	MinuteBPM[i] = BPM;
+}
 
-    Serial.println("--> connection failed\n");
-  }*/
+if (Second >= 60)
+{
+	Serial.print("avgBPM : ");
+	Serial.println(avgBPM);
+}
+
 }

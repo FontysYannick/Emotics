@@ -89,9 +89,9 @@ namespace EmotiqApp
 
         private void loadPanel(System.Windows.Forms.Form iForm)
         {
-        this.pnlFormLoader.Controls.Clear();
-        this.pnlFormLoader.Controls.Add(iForm);
-        iForm.Show();
+            this.pnlFormLoader.Controls.Clear();
+            this.pnlFormLoader.Controls.Add(iForm);
+            iForm.Show();
         }
 
         private void btnColorReset()
@@ -105,12 +105,6 @@ namespace EmotiqApp
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-
-        public void SetUsername(string Username)
-        {
-            this.Close();
         }
     }
 }

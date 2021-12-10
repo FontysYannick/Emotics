@@ -29,7 +29,6 @@ namespace EmotiqApp
             string Username = TBname.Text;
             frm1.LBuser.Text = "Hello " + Username;
             frm1.Show();
-            frm1.SetUsername(Username);
         }
     }
 }

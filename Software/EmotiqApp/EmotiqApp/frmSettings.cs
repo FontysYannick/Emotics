@@ -12,9 +12,24 @@ namespace EmotiqApp
 {
     public partial class frmSettings : Form
     {
+        
         public frmSettings()
         {
             InitializeComponent();
+        }
+
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BTNsave_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            string Username = TBname.Text;
+            frm1.LBuser.Text = "Hello " + Username;
+            frm1.Show();
+            frm1.SetUsername(Username);
         }
     }
 }

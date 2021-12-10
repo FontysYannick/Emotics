@@ -18,6 +18,9 @@ namespace EmotiqApp
         frmContacts frmContactsWindow = new frmContacts() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmSettings frmSettingsWindow = new frmSettings() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
 
+        private Color colorreset = Color.FromArgb(24, 30, 54);
+        private Color colorback  = Color.FromArgb(46, 52, 73);
+
         public Form1()
         {
             InitializeComponent();
@@ -30,9 +33,10 @@ namespace EmotiqApp
             pnlNav.Left = btnHome.Left;
 
             btnColorReset();
-            btnHome.BackColor = Color.FromArgb(46, 52, 73);
+            btnHome.BackColor = colorback;
 
             loadPanel(frmHomeWindow);
+            //LBgebruiker.Text = "Hallo " + frmSettingsWindow.Username;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -42,7 +46,7 @@ namespace EmotiqApp
             pnlNav.Left = btnHome.Left;
 
             btnColorReset();
-            btnHome.BackColor = Color.FromArgb(46, 52, 73);
+            btnHome.BackColor = colorback;
 
             loadPanel(frmHomeWindow);
         }
@@ -54,7 +58,7 @@ namespace EmotiqApp
             pnlNav.Left = btnGraph.Left;
 
             btnColorReset();
-            btnGraph.BackColor = Color.FromArgb(46, 52, 73);
+            btnGraph.BackColor = colorback;
 
             loadPanel(frmGraphWindow);
         }
@@ -66,7 +70,7 @@ namespace EmotiqApp
             pnlNav.Left = btnContacts.Left;
 
             btnColorReset();
-            btnContacts.BackColor = Color.FromArgb(46, 52, 73);
+            btnContacts.BackColor = colorback;
 
             loadPanel(frmContactsWindow);
         }
@@ -78,7 +82,7 @@ namespace EmotiqApp
             pnlNav.Left = btnSettings.Left;
 
             btnColorReset();
-            btnSettings.BackColor = Color.FromArgb(46, 52, 73);
+            btnSettings.BackColor = colorback;
 
             loadPanel(frmSettingsWindow);
         }
@@ -92,15 +96,21 @@ namespace EmotiqApp
 
         private void btnColorReset()
         {
-            btnHome.BackColor = Color.FromArgb(24, 30, 54);
-            btnGraph.BackColor = Color.FromArgb(24, 30, 54);
-            btnContacts.BackColor = Color.FromArgb(24, 30, 54);
-            btnSettings.BackColor = Color.FromArgb(24, 30, 54);
+            btnHome.BackColor = colorreset;
+            btnGraph.BackColor = colorreset;
+            btnContacts.BackColor = colorreset;
+            btnSettings.BackColor = colorreset;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+
+        public void SetUsername(string Username)
+        {
+            this.Close();
         }
     }
 }

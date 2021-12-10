@@ -29,13 +29,14 @@ namespace EmotiqApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
             this.btnContacts = new System.Windows.Forms.Button();
             this.btnGraph = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LBuser = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlFormLoader = new System.Windows.Forms.Panel();
@@ -128,16 +129,16 @@ namespace EmotiqApp
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // label1
+            // LBuser
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label1.Location = new System.Drawing.Point(150, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Hallo gebruiker";
+            this.LBuser.AutoSize = true;
+            this.LBuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBuser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.LBuser.Location = new System.Drawing.Point(150, 10);
+            this.LBuser.Name = "LBuser";
+            this.LBuser.Size = new System.Drawing.Size(183, 29);
+            this.LBuser.TabIndex = 2;
+            this.LBuser.Text = "Hallo gebruiker";
             // 
             // pictureBox2
             // 
@@ -178,10 +179,11 @@ namespace EmotiqApp
             this.ClientSize = new System.Drawing.Size(500, 800);
             this.Controls.Add(this.pnlFormLoader);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LBuser);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -198,13 +200,13 @@ namespace EmotiqApp
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnContacts;
         private System.Windows.Forms.Button btnGraph;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Panel pnlNav;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnlFormLoader;
+        public System.Windows.Forms.Label LBuser;
     }
 }
 

@@ -27,7 +27,7 @@ namespace EmotiqApp
         {
             Form1 frm1 = new Form1();
             string Username = TBname.Text;
-            frm1.LBuser.Text = "Hello " + Username;
+            frm1.LBuser.Text = "Welcome " + Username;
             frm1.Show();
         }
     }

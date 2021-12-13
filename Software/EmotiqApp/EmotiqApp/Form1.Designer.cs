@@ -136,9 +136,9 @@ namespace EmotiqApp
             this.LBuser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.LBuser.Location = new System.Drawing.Point(150, 10);
             this.LBuser.Name = "LBuser";
-            this.LBuser.Size = new System.Drawing.Size(183, 29);
+            this.LBuser.Size = new System.Drawing.Size(180, 29);
             this.LBuser.TabIndex = 2;
-            this.LBuser.Text = "Hallo gebruiker";
+            this.LBuser.Text = "Welcome User";
             // 
             // pictureBox2
             // 

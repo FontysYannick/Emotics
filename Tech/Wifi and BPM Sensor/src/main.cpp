@@ -7,6 +7,9 @@
 #include <ArduinoJson.h>
 
 
+
+
+
 const int PulseSensorPurplePin = 0; //pin voor hartslag sensor
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
 
@@ -14,11 +17,11 @@ unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
-//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
-char SSID[] = "LAPTOP-TGTISK9B 1790";
-char PASS[] = "955Y1n51";
+/*char SSID[] = "LAPTOP-TGTISK9B 1790";
+char PASS[] = "955Y1n51";*/
 
 const char server[] = "studmysql01.fhict.local"; //database
 
@@ -37,11 +40,14 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
-const int Button = 9; // voor sportstand
+const int Button = 1; // voor sportstand
 int ButtonState = 0; // voor sportstand
 bool SportModus = false; // voor sportstand
 
-
+static int jema = 0;
+unsigned long MinuteBPM[60];
+int avgBPM;
+int Calculation = Minute + 1;
 
 void setup() 
 {
@@ -148,7 +154,7 @@ void loop()
 	BPM = map(Signal, 0, 1000, 0, 100);
 
 	lcd.setCursor(0, 0);
-	lcd.print("BPM <3: ");
+	lcd.print("BPM : ");
 	lcd.print(BPM);
 
 	if (Second < 10)
@@ -173,6 +179,7 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
+		avgBPM = 0;
 	}
 
 	if (Minute > 9)
@@ -211,32 +218,36 @@ void loop()
 
 	ButtonState = digitalRead(Button);
 
-	if (ButtonState == LOW) 
+	if (ButtonState == HIGH) 
 	{
  		SportModus = !SportModus;
 	}
 	if (SportModus == HIGH)
 	{
-		Serial.println("Sport Stand : ON");
+		Serial.println("Sport Modus : ON");
 	}
 	else {
-		Serial.println("Sport Stand : OFF");
+		Serial.println("Sport Modus : OFF");
 		SendData();
 	}
 
-int MinuteBPM[60];
-int avgBPM;
-avgBPM = MinuteBPM[Second] / 60;
+
 
 if (BPM >= 0)
 {
 	MinuteBPM[Second] = BPM;
+	avgBPM = avgBPM + BPM;
+	Serial.println(avgBPM);
+
 }
 
 if (Second >= 60)
 {
 	Serial.print("avgBPM : ");
-	Serial.println(avgBPM);
-}
+	Serial.println(avgBPM / 60);
+	avgBPM = jema;
+	MinuteBPM[Second] = 0;
+	BPM = 0;
 
+}
 }

@@ -19,10 +19,10 @@
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino/api/deprecated",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/variants/uno2018",
-                "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/EEPROM/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/HID/src",
                 "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SoftwareSerial/src",
+                "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                 "C:/Users/alexk/.platformio/packages/tool-unity",
                 ""
             ],
@@ -40,10 +40,10 @@
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino/api/deprecated",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/cores/arduino",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/variants/uno2018",
-                    "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/EEPROM/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/HID/src",
                     "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/SoftwareSerial/src",
+                    "C:/Users/alexk/.platformio/packages/framework-arduino-megaavr/libraries/Wire/src",
                     "C:/Users/alexk/.platformio/packages/tool-unity",
                     ""
                 ]

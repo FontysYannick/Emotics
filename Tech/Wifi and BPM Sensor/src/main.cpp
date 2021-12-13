@@ -1,3 +1,4 @@
+///Librarys//////////////////////////////////////////////////////////////////////
 #include <Arduino.h>
 #include <PulseSensorPlayground.h>
 #include <WiFiNINA.h>
@@ -5,55 +6,63 @@
 #include <SPI.h>
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
+///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
+const int PulseSensorPin = 0; //pin voor hartslag sensor
+const int RGBRed = 10;
+const int RGBGreen = 9;
+const int RGBBlue = 8;
+const int Button = 1;
 
-
-
-
-
-const int PulseSensorPurplePin = 0; //pin voor hartslag sensor
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
+///Normal variable for button////////////////////////////////////////////////////////////
+
+int ButtonState = HIGH;
+int lastButtonState = HIGH;
+
+bool SportModus = false; // voor sportstand
+
+///Debounce/Delay////////////////////////////////////////////////////////////////////////
 
 unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
-char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+///ID and WW for Wifi////////////////////////////////////////////////////////////////////
 
-/*char SSID[] = "LAPTOP-TGTISK9B 1790";
-char PASS[] = "955Y1n51";*/
+//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
-const char server[] = "studmysql01.fhict.local"; //database
+char SSID[] = "LAPTOP-TGTISK9B 1790";
+char PASS[] = "955Y1n51";
 
 int status = WL_IDLE_STATUS; //Wifi status
+///Database//////////////////////////////////////////////////////////////////////////////
+
+const char server[] = "studmysql01.fhict.local"; 
+int clientId = 0;
 
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, server, 2435);
 
-int Signal; //signaal wat van hartslag sensor afkomt
-int BPM;  //map function voor BPM
-int gemBPM[60];
+///Heartbeat/////////////////////////////////////////////////////////////////////////////
 
-int clientId = 0;
+int BPM;  //map function voor BPM
+int avgBPM; //
+unsigned long MinuteBPM[60];
+///Timer////////////////////////////////////////////////////////////////////////////////
 
 int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
-const int Button = 1; // voor sportstand
-int ButtonState = 0; // voor sportstand
-bool SportModus = false; // voor sportstand
-
-static int jema = 0;
-unsigned long MinuteBPM[60];
-int avgBPM;
-int Calculation = Minute + 1;
+////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() 
 {
+///Begin lcd and Serial/////////////////////////////////////////////////////////////////
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
-	
+///Connect to wifi//////////////////////////////////////////////////////////////////////
 	while (status != WL_CONNECTED)
   	{
    		Serial.print("Connecting to WiFi");
@@ -70,16 +79,16 @@ void setup()
  	Serial.println("Connected to the WiFi network");
  	Serial.println(WiFi.localIP());
 	delay(1200);
-
+///Time to LCD screen///////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 1);
 	lcd.print("Time past:  0.00");
 	lcd.setCursor(13,1);
+
+///Start time set on 0//////////////////////////////////////////////////////////////////
 	Second = 0;
 	Minute = 0;
-
-	
-
-	pinMode(Button, INPUT); //voor sportstand
+///Button is input//////////////////////////////////////////////////////////////////////
+	pinMode(Button, INPUT); 
 }
 
 void SendData() {
@@ -150,13 +159,14 @@ void updateAmperage() {
 
 void loop()
 {
-	Signal = analogRead(PulseSensorPurplePin);
-	BPM = map(Signal, 0, 1000, 0, 100);
-
+///BPM to BPM variable//////////////////////////////////////////////////////////////////
+	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
+///LCD print BPM waarde/////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 0);
 	lcd.print("BPM : ");
 	lcd.print(BPM);
 
+///Timer showing on LCD screen//////////////////////////////////////////////////////////
 	if (Second < 10)
 	{
 		lcd.setCursor(15,1);
@@ -179,7 +189,7 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
-		avgBPM = 0;
+		avgBPM = 0; //avarage BPM reset
 	}
 
 	if (Minute > 9)
@@ -204,17 +214,7 @@ void loop()
 	Second ++;
 
 	delay(1000);
-	/*
-	int gemBPM[60] = { };
-	int Count;
-	int AVG = 0;
-	for (Count = 0; Count < 1; Count++)
-	{
-		gemBPM[Count] = BPM;
-		AVG = gemBPM[Count] / 60;
-		Serial.print("gemBPM : ");
-		Serial.println(AVG);
-	}*/
+	
 
 	ButtonState = digitalRead(Button);
 
@@ -245,7 +245,6 @@ if (Second >= 60)
 {
 	Serial.print("avgBPM : ");
 	Serial.println(avgBPM / 60);
-	avgBPM = jema;
 	MinuteBPM[Second] = 0;
 	BPM = 0;
 

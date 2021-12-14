@@ -58,6 +58,7 @@ int Hour = 0;
 
 void setup() 
 {
+
 ///Begin lcd and Serial/////////////////////////////////////////////////////////////////
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
@@ -88,7 +89,47 @@ void setup()
 	Minute = 0;
 ///Button is input//////////////////////////////////////////////////////////////////////
 	pinMode(Button, INPUT); 
+
+////////////////////////////
+
+ int temp;
+temp = 1;
+
+client.print(temp);
+Serial.print("Yeah... it ain't holding");
+ //int temp = 4;
+ // int humid = 5;
+
+  if (client.connect("studmysql01.fhict.local", 80))
+  {
+    // REPLACE WITH YOUR SERVER ADDRESS
+    Serial.println("connected");
+    client.println("GET /insertmysql.php?temp=");
+    //client.println("?temp=");
+    client.println("4");
+    //client.println("Humid=");
+    //client.println(humid);
+    client.println(" HTTP/1.1");
+    client.println("Host: 10.0.0.56");
+    //client.println("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
+    client.println();
+    //client.print(query);
+    //client.print("Content-Length: ");
+    //int thisLength = query.length();
+    //client.println(thisLength);
+    
+  }
+  delay(2000);
+  Serial.println("Response: ");
+  while (client.connected() || client.available())
+  {
+    Serial.write(client.read());
+  }
+delay(10000);
 }
+
+
+
 
 void SendData() {
 /*void registerArduino() {
@@ -220,7 +261,6 @@ void loop()
 ///Sport mode, if you are active you're heartbeat is not send to the database////////////
 	ButtonState = digitalRead(Button);
 
-Serial.println(ButtonState);
 	if (ButtonState == HIGH) 
 	{
  		SportModus = !SportModus;
@@ -252,4 +292,5 @@ if (Second >= 60)
 	BPM = 0;
 
 }
+///Database connectie en doorsturen/////////////////////////////////////////////////////
 }

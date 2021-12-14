@@ -91,7 +91,9 @@
   <ItemGroup>
     <Compile Include="DBaddcontact.cs" />
     <Compile Include="DBdelete.cs" />
+    <Compile Include="DBemotion.cs" />
     <Compile Include="DBselect.cs" />
+    <Compile Include="DBtipsquotes.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

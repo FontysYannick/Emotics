@@ -8,20 +8,20 @@
 #include <ArduinoJson.h>
 ///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
 const int PulseSensorPin = A5; //pin voor hartslag sensor
-const int RGBRed = 10;
-const int RGBGreen = 9;
-const int RGBBlue = 8;
+const int RGBGreen = A1;
+const int RGBRed = A0;
+const int RGBBlue = A2;
 const int Button = 1;
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
 ///Normal variable for button////////////////////////////////////////////////////////////
 
+int LastButtonState = 0;
 int ButtonState = 0;
 
 bool SportModus = false; // voor sportstand
 
 ///Debounce/Delay////////////////////////////////////////////////////////////////////////
-
 unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
@@ -54,6 +54,8 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
+
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() 
@@ -61,6 +63,9 @@ void setup()
 ///Begin lcd and Serial/////////////////////////////////////////////////////////////////
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
+	pinMode(RGBRed, OUTPUT);
+	pinMode(RGBBlue, OUTPUT);
+	pinMode(RGBGreen, OUTPUT);
 ///Connect to wifi//////////////////////////////////////////////////////////////////////
 	while (status != WL_CONNECTED)
   	{
@@ -223,6 +228,7 @@ void loop()
 Serial.println(ButtonState);
 	if (ButtonState == HIGH) 
 	{
+
  		SportModus = !SportModus;
 	}
 	if (SportModus == HIGH)
@@ -250,6 +256,13 @@ if (Second >= 60)
 	Serial.println(avgBPM / 60);
 	MinuteBPM[Second] = 0;
 	BPM = 0;
-
 }
+
+map(RGBRed, 0, 255, 0, 100);
+map(RGBGreen, 0, 255, 0, 100);
+map(RGBBlue, 0, 255, 0, 100);
+digitalWrite(RGBRed, 90);
+digitalWrite(RGBBlue, 0);
+digitalWrite(RGBGreen, 0);
+
 }

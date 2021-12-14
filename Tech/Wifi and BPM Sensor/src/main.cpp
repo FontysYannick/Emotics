@@ -207,21 +207,24 @@ void loop()
 	Serial.println(Second);
 
 	Serial.print("BPM : ");
-	Serial.println(Signal / 10);
+	Serial.println(BPM);
 
 	Serial.println("");
 
 	Second ++;
 
-	delay(1000);
+	delay(1000);//moet eig naar millis
 	
-
+///Sport mode, if you are active you're heartbeat is not send to the database////////////
 	ButtonState = digitalRead(Button);
 
+if(ButtonState != lastButtonState)
+{
 	if (ButtonState == HIGH) 
 	{
  		SportModus = !SportModus;
 	}
+}
 	if (SportModus == HIGH)
 	{
 		Serial.println("Sport Modus : ON");
@@ -231,7 +234,7 @@ void loop()
 		SendData();
 	}
 
-
+///Saving BPM for later use as avarage//////////////////////////////////////////////////
 
 if (BPM >= 0)
 {
@@ -240,7 +243,7 @@ if (BPM >= 0)
 	Serial.println(avgBPM);
 
 }
-
+///Printing avarage BPM/////////////////////////////////////////////////////////////////
 if (Second >= 60)
 {
 	Serial.print("avgBPM : ");
@@ -249,4 +252,5 @@ if (Second >= 60)
 	BPM = 0;
 
 }
+ButtonState = lastButtonState; //resetting lastButtonState
 }

@@ -7,7 +7,7 @@
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
 ///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
-const int PulseSensorPin = 0; //pin voor hartslag sensor
+const int PulseSensorPin = A5; //pin voor hartslag sensor
 const int RGBRed = 10;
 const int RGBGreen = 9;
 const int RGBBlue = 8;
@@ -16,8 +16,7 @@ const int Button = 1;
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
 ///Normal variable for button////////////////////////////////////////////////////////////
 
-int ButtonState = HIGH;
-int lastButtonState = HIGH;
+int ButtonState = 0;
 
 bool SportModus = false; // voor sportstand
 
@@ -163,7 +162,7 @@ void loop()
 	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
 ///LCD print BPM waarde/////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 0);
-	lcd.print("BPM : ");
+	lcd.print("BPM: ");
 	lcd.print(BPM);
 
 ///Timer showing on LCD screen//////////////////////////////////////////////////////////
@@ -189,6 +188,9 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
+		lcd.setCursor(9, 0);
+		lcd.print("avg: ");
+		lcd.print(avgBPM / 60);
 		avgBPM = 0; //avarage BPM reset
 	}
 
@@ -218,13 +220,11 @@ void loop()
 ///Sport mode, if you are active you're heartbeat is not send to the database////////////
 	ButtonState = digitalRead(Button);
 
-if(ButtonState != lastButtonState)
-{
+Serial.println(ButtonState);
 	if (ButtonState == HIGH) 
 	{
  		SportModus = !SportModus;
 	}
-}
 	if (SportModus == HIGH)
 	{
 		Serial.println("Sport Modus : ON");
@@ -252,5 +252,4 @@ if (Second >= 60)
 	BPM = 0;
 
 }
-ButtonState = lastButtonState; //resetting lastButtonState
 }

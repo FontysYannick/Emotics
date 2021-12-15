@@ -28,11 +28,11 @@ unsigned long CurrentTime = millis();
 
 ///ID and WW for Wifi////////////////////////////////////////////////////////////////////
 
-//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
-char SSID[] = "LAPTOP-TGTISK9B 1790";
-char PASS[] = "955Y1n51";
+//char SSID[] = "LAPTOP-TGTISK9B 1790";
+//char PASS[] = "955Y1n51";
 
 int status = WL_IDLE_STATUS; //Wifi status
 ///Database//////////////////////////////////////////////////////////////////////////////
@@ -53,8 +53,6 @@ unsigned long MinuteBPM[60];
 int Second = 0;
 int Minute = 0;
 int Hour = 0;
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -85,8 +83,16 @@ void setup()
 	delay(1200);
 ///Time to LCD screen///////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 1);
-	lcd.print("Time past:  0.00");
+	lcd.print("Timer : 00.00.00");
 	lcd.setCursor(13,1);
+	lcd.setCursor(8,0);
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
 
 ///Start time set on 0//////////////////////////////////////////////////////////////////
 	Second = 0;
@@ -193,11 +199,25 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
-		lcd.setCursor(9, 0);
+		lcd.setCursor(8,0);
 		lcd.print("avg: ");
 		lcd.print(avgBPM / 60);
+		lcd.setCursor(15,0);
+		lcd.print(" ");
 		avgBPM = 0; //avarage BPM reset
 	}
+	if (Second >= 10)
+	{
+		lcd.setCursor(8,0);
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
+	}
+	
 
 	if (Minute > 9)
 	{
@@ -206,6 +226,31 @@ void loop()
 		lcd.setCursor(13,1);
 		lcd.print(".");
 	}
+	if (Minute >= 60)
+	{
+		Second = 0;
+		Minute = 0;
+		Hour ++;
+
+		lcd.setCursor(14,1);
+		lcd.print("00");
+		lcd.setCursor(11,1);
+		lcd.print("00");
+		lcd.setCursor(15,0);
+		lcd.print(" ");
+		lcd.setCursor(9,1);
+		lcd.print(Hour);
+	}
+	if (Hour > 9)
+	{
+		lcd.setCursor(8, 1);
+		lcd.print(Hour);
+		lcd.setCursor(10,1);
+		lcd.print(".");
+	}
+	
+	Serial.print("Hour : ");
+	Serial.println(Hour);
 
 	Serial.print("Min : ");
 	Serial.println(Minute);
@@ -225,7 +270,6 @@ void loop()
 ///Sport mode, if you are active you're heartbeat is not send to the database////////////
 	ButtonState = digitalRead(Button);
 
-Serial.println(ButtonState);
 	if (ButtonState == HIGH) 
 	{
 
@@ -244,18 +288,13 @@ Serial.println(ButtonState);
 
 if (BPM >= 0)
 {
-	MinuteBPM[Second] = BPM;
 	avgBPM = avgBPM + BPM;
-	Serial.println(avgBPM);
-
 }
 ///Printing avarage BPM/////////////////////////////////////////////////////////////////
 if (Second >= 60)
 {
 	Serial.print("avgBPM : ");
 	Serial.println(avgBPM / 60);
-	MinuteBPM[Second] = 0;
-	BPM = 0;
 }
 
 map(RGBRed, 0, 255, 0, 100);

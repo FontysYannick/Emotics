@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateEmotion.cs" />
     <Compile Include="DBaddcontact.cs" />
     <Compile Include="DBdelete.cs" />
     <Compile Include="DBemotion.cs" />

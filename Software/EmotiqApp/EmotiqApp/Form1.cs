@@ -36,7 +36,6 @@ namespace EmotiqApp
             btnHome.BackColor = colorback;
 
             loadPanel(frmHomeWindow);
-            //LBgebruiker.Text = "Hallo " + frmSettingsWindow.Username;
         }
 
         private void btnHome_Click(object sender, EventArgs e)

@@ -21,6 +21,10 @@ namespace EmotiqApp
         private string tip;
         private string quote;
 
+        //
+        CalculateEmotion kaas = new CalculateEmotion();
+        //
+
         public frmHome()
         {
             InitializeComponent();
@@ -36,6 +40,10 @@ namespace EmotiqApp
             LBemotion.Text = lastEmotion;
             LBtip.Text = "Tip: " + tip;
             LBquote.Text = "Quote: " + quote;
+
+            //
+            kaas.CalculationLastEmotion();
+            //
         }
 
         public void TimeUp(object source, EventArgs e)
@@ -51,6 +59,10 @@ namespace EmotiqApp
             Console.WriteLine(lastEmotion);
             Console.WriteLine(tip);
             Console.WriteLine(quote);
+
+            //
+            kaas.CalculationLastEmotion();
+            //
         }
     }
 }

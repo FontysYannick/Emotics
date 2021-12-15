@@ -25,7 +25,6 @@ namespace EmotiqApp
         private void frmContacts_Load(object sender, EventArgs e)
         {
             clear();
-            dbselect.Select(DBselect.Tabel.contacts);
         }
 
         private void BTNadd_Click(object sender, EventArgs e)

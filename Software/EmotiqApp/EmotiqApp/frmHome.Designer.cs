@@ -48,7 +48,7 @@ namespace EmotiqApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Location = new System.Drawing.Point(187, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 23);
             this.label2.TabIndex = 5;

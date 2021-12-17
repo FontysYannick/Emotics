@@ -6,6 +6,11 @@
 #include <SPI.h>
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
+#include <dht.h>
+
+dht TempSensor;
+
+#define DHT11_PIN 7
 ///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
 const int PulseSensorPin = A5; //pin voor hartslag sensor
 const int RGBGreen = A1;
@@ -171,6 +176,10 @@ void loop()
 {
 ///BPM to BPM variable//////////////////////////////////////////////////////////////////
 	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
+
+	int chk = TempSensor.read11(DHT11_PIN);
+
+	lcd.print(TempSensor.temperature);
 ///LCD print BPM waarde/////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 0);
 	lcd.print("BPM: ");

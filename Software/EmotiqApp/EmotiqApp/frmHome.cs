@@ -22,7 +22,7 @@ namespace EmotiqApp
         private string quote;
 
         //
-        CalculateEmotion kaas = new CalculateEmotion();
+        CalculateEmotion EmotionCalculator = new CalculateEmotion();
         //
 
         public frmHome()
@@ -42,7 +42,7 @@ namespace EmotiqApp
             LBquote.Text = "Quote: " + quote;
 
             //
-            kaas.CalculationLastEmotion();
+            EmotionCalculator.CalculationLastEmotion();
             //
         }
 
@@ -61,7 +61,7 @@ namespace EmotiqApp
             Console.WriteLine(quote);
 
             //
-            kaas.AddEmotionToDB();
+            EmotionCalculator.AddEmotionToDB();
             //
         }
     }

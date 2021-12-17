@@ -6,33 +6,38 @@
 #include <SPI.h>
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
+#include <dht.h>
+
+dht TempSensor;
+
+#define DHT11_PIN 7
 ///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
 const int PulseSensorPin = A5; //pin voor hartslag sensor
-const int RGBRed = 10;
-const int RGBGreen = 9;
-const int RGBBlue = 8;
+const int RGBGreen = A1;
+const int RGBRed = A0;
+const int RGBBlue = A2;
 const int Button = 1;
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
 ///Normal variable for button////////////////////////////////////////////////////////////
 
+int LastButtonState = 0;
 int ButtonState = 0;
 
 bool SportModus = false; // voor sportstand
 
 ///Debounce/Delay////////////////////////////////////////////////////////////////////////
-
 unsigned long EventTime = 60000;
 unsigned long PreviousTime = 0;
 unsigned long CurrentTime = millis();
 
 ///ID and WW for Wifi////////////////////////////////////////////////////////////////////
 
-//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
-char SSID[] = "LAPTOP-TGTISK9B 1790";
-char PASS[] = "955Y1n51";
+//char SSID[] = "LAPTOP-TGTISK9B 1790";
+//char PASS[] = "955Y1n51";
 
 int status = WL_IDLE_STATUS; //Wifi status
 ///Database//////////////////////////////////////////////////////////////////////////////
@@ -62,6 +67,9 @@ void setup()
 ///Begin lcd and Serial/////////////////////////////////////////////////////////////////
 	lcd.begin(16, 2, 32);
 	Serial.begin(9600);
+	pinMode(RGBRed, OUTPUT);
+	pinMode(RGBBlue, OUTPUT);
+	pinMode(RGBGreen, OUTPUT);
 ///Connect to wifi//////////////////////////////////////////////////////////////////////
 	while (status != WL_CONNECTED)
   	{
@@ -81,8 +89,16 @@ void setup()
 	delay(1200);
 ///Time to LCD screen///////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 1);
-	lcd.print("Time past:  0.00");
+	lcd.print("Timer : 00.00.00");
 	lcd.setCursor(13,1);
+	lcd.setCursor(8,0);
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
 
 ///Start time set on 0//////////////////////////////////////////////////////////////////
 	Second = 0;
@@ -201,6 +217,10 @@ void loop()
 {
 ///BPM to BPM variable//////////////////////////////////////////////////////////////////
 	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
+
+	int chk = TempSensor.read11(DHT11_PIN);
+
+	lcd.print(TempSensor.temperature);
 ///LCD print BPM waarde/////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 0);
 	lcd.print("BPM: ");
@@ -229,11 +249,25 @@ void loop()
 		lcd.print("00");
 		lcd.setCursor(12,1);
 		lcd.print(Minute);
-		lcd.setCursor(9, 0);
+		lcd.setCursor(8,0);
 		lcd.print("avg: ");
 		lcd.print(avgBPM / 60);
+		lcd.setCursor(15,0);
+		lcd.print(" ");
 		avgBPM = 0; //avarage BPM reset
 	}
+	if (Second >= 10)
+	{
+		lcd.setCursor(8,0);
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
+	}
+	
 
 	if (Minute > 9)
 	{
@@ -242,6 +276,31 @@ void loop()
 		lcd.setCursor(13,1);
 		lcd.print(".");
 	}
+	if (Minute >= 60)
+	{
+		Second = 0;
+		Minute = 0;
+		Hour ++;
+
+		lcd.setCursor(14,1);
+		lcd.print("00");
+		lcd.setCursor(11,1);
+		lcd.print("00");
+		lcd.setCursor(15,0);
+		lcd.print(" ");
+		lcd.setCursor(9,1);
+		lcd.print(Hour);
+	}
+	if (Hour > 9)
+	{
+		lcd.setCursor(8, 1);
+		lcd.print(Hour);
+		lcd.setCursor(10,1);
+		lcd.print(".");
+	}
+	
+	Serial.print("Hour : ");
+	Serial.println(Hour);
 
 	Serial.print("Min : ");
 	Serial.println(Minute);
@@ -263,6 +322,7 @@ void loop()
 
 	if (ButtonState == HIGH) 
 	{
+
  		SportModus = !SportModus;
 	}
 	if (SportModus == HIGH)
@@ -278,19 +338,24 @@ void loop()
 
 if (BPM >= 0)
 {
-	MinuteBPM[Second] = BPM;
 	avgBPM = avgBPM + BPM;
-	Serial.println(avgBPM);
-
 }
 ///Printing avarage BPM/////////////////////////////////////////////////////////////////
 if (Second >= 60)
 {
 	Serial.print("avgBPM : ");
 	Serial.println(avgBPM / 60);
-	MinuteBPM[Second] = 0;
-	BPM = 0;
-
 }
+<<<<<<< HEAD
 ///Database connectie en doorsturen/////////////////////////////////////////////////////
+=======
+
+map(RGBRed, 0, 255, 0, 100);
+map(RGBGreen, 0, 255, 0, 100);
+map(RGBBlue, 0, 255, 0, 100);
+digitalWrite(RGBRed, 90);
+digitalWrite(RGBBlue, 0);
+digitalWrite(RGBGreen, 0);
+
+>>>>>>> Technology
 }

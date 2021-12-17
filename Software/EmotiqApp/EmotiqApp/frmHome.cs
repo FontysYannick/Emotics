@@ -30,7 +30,7 @@ namespace EmotiqApp
             InitializeComponent();
 
             myTimer.Tick += new EventHandler( TimeUp );
-            myTimer.Interval = 5000;
+            myTimer.Interval = 10000;
             myTimer.Start();
 
             lastEmotion = CurrentEmotion.SelectLastEmotion();
@@ -61,7 +61,7 @@ namespace EmotiqApp
             Console.WriteLine(quote);
 
             //
-            kaas.CalculationLastEmotion();
+            kaas.AddEmotionToDB();
             //
         }
     }

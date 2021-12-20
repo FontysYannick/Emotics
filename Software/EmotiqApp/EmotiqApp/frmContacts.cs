@@ -12,9 +12,7 @@ namespace EmotiqApp
 {
     public partial class frmContacts : Form
     {
-        DBselect dbselect = new DBselect();
-        DBdelete dbdelete = new DBdelete();
-        DBaddcontact dbadd = new DBaddcontact();
+        Contact contact = new Contact();
         private string id;
 
         public frmContacts()
@@ -31,14 +29,14 @@ namespace EmotiqApp
         {
             if (emptyboxcheck())
             {
-                dbadd.Add(TBfirstname.Text, TBprefix.Text, TBlastname.Text, TBphonenumber.Text);
+                contact.AddContact(TBfirstname.Text, TBprefix.Text, TBlastname.Text, TBphonenumber.Text);
                 clear();
             }
         }
 
         private void BTNremove_Click(object sender, EventArgs e)
         {
-            dbdelete.Delete(id);
+            contact.DeleteContact(id);
             BTNadd.Enabled = true;
             BTNremove.Enabled = false;
             clear();
@@ -78,8 +76,8 @@ namespace EmotiqApp
             Listcontact.Items.Clear();
             BTNremove.Enabled = false;
 
-            List<ListViewItem> contact = dbselect.Select(DBselect.Tabel.contacts);
-            foreach (var item in contact)
+            List<ListViewItem> contactList = contact.SelectContact();
+            foreach (var item in contactList)
             {
                 Listcontact.Items.Add(item);
             }

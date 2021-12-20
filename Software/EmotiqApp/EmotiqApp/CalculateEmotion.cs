@@ -24,7 +24,6 @@ namespace EmotiqApp
             SelectLastTemp();
 
             double emotionnumber = bpm * 1.5 + (o2 / 10) * (2 * (temp / 10)) + 4;
-            Console.WriteLine(emotionnumber);
 
             if (emotionnumber > 0 && emotionnumber <= 104)
             {
@@ -50,13 +49,13 @@ namespace EmotiqApp
             {
                 emotion = "Pannicked";
             }
-            Console.WriteLine(emotion);
 
+            AddEmotionToDB(emotion);
 
             return emotion;
         }
 
-        public int SelectLastBPM()
+        private int SelectLastBPM()
         {
             string query = "SELECT * FROM sensorvalues ORDER BY ID DESC LIMIT 1";
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
@@ -74,7 +73,6 @@ namespace EmotiqApp
                     while (reader.Read())
                     {
                         bpm = reader.GetInt32(1);
-                        Console.WriteLine(reader.GetInt32(1));
                     }
                 }
                 else
@@ -92,7 +90,7 @@ namespace EmotiqApp
             return bpm;
         }
 
-        public double SelectLastTemp()
+        private double SelectLastTemp()
         {
             string query = "SELECT * FROM sensorvalues ORDER BY ID DESC LIMIT 1";
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
@@ -110,7 +108,6 @@ namespace EmotiqApp
                     while (reader.Read())
                     {
                         temp = reader.GetDouble(2);
-                        Console.WriteLine(reader.GetDouble(2));
                     }
                 }
                 else
@@ -128,7 +125,7 @@ namespace EmotiqApp
             return temp;
         }
 
-        public int SelectLastO2()
+        private int SelectLastO2()
         {
             string query = "SELECT * FROM sensorvalues ORDER BY ID DESC LIMIT 1";
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
@@ -146,7 +143,6 @@ namespace EmotiqApp
                     while (reader.Read())
                     {
                         o2 = reader.GetInt32(3);
-                        Console.WriteLine(reader.GetInt32(3));
                     }
                 }
                 else
@@ -164,9 +160,8 @@ namespace EmotiqApp
             return o2;
         }
 
-        public void AddEmotionToDB()
+        private void AddEmotionToDB(string emotion)
         {
-            emotion = CalculationLastEmotion();
             string query = "INSERT INTO emotion(`ID`, `emotion`) VALUES (NULL, '" + emotion + "')";
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
@@ -177,14 +172,10 @@ namespace EmotiqApp
             {
                 databaseConnection.Open();
                 MySqlDataReader myReader = commandDatabase.ExecuteReader();
-
-                MessageBox.Show("User succesfully registered", "Registerd", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 databaseConnection.Close();
             }
             catch (Exception ex)
             {
-                // Show any error message.
                 MessageBox.Show(ex.Message);
             }
         }

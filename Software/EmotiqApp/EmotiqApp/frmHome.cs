@@ -15,15 +15,14 @@ namespace EmotiqApp
     public partial class frmHome : Form
     {
         System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        DBemotion CurrentEmotion = new DBemotion();
-        DBtipsquotes CurrentTipQuote = new DBtipsquotes();
+
+        Quote CurrentQuote = new Quote();
+        Tip CurrentTip = new Tip();
+        CalculateEmotion CalculateEmotion = new CalculateEmotion();
+
         private string lastEmotion;
         private string tip;
         private string quote;
-
-        //
-        CalculateEmotion EmotionCalculator = new CalculateEmotion();
-        //
 
         public frmHome()
         {
@@ -33,36 +32,26 @@ namespace EmotiqApp
             myTimer.Interval = 10000;
             myTimer.Start();
 
-            lastEmotion = CurrentEmotion.SelectLastEmotion();
-            tip = CurrentTipQuote.SelectTip(lastEmotion);
-            quote = CurrentTipQuote.SelectQuote(lastEmotion);
+            lastEmotion = CalculateEmotion.CalculationLastEmotion();
+
+            tip = CurrentTip.SelectTip(lastEmotion);
+            quote = CurrentQuote.SelectQuote(lastEmotion);
 
             LBemotion.Text = lastEmotion;
             LBtip.Text = "Tip: " + tip;
             LBquote.Text = "Quote: " + quote;
-
-            //
-            EmotionCalculator.CalculationLastEmotion();
-            //
         }
 
         public void TimeUp(object source, EventArgs e)
         {
-            lastEmotion = CurrentEmotion.SelectLastEmotion();
-            tip = CurrentTipQuote.SelectTip(lastEmotion);
-            quote = CurrentTipQuote.SelectQuote(lastEmotion);
+            lastEmotion = CalculateEmotion.CalculationLastEmotion();
+
+            tip = CurrentTip.SelectTip(lastEmotion);
+            quote = CurrentQuote.SelectQuote(lastEmotion);
 
             LBemotion.Text = lastEmotion;
             LBtip.Text = "Tip: " + tip;
             LBquote.Text = "Quote: " + quote;
-
-            Console.WriteLine(lastEmotion);
-            Console.WriteLine(tip);
-            Console.WriteLine(quote);
-
-            //
-            EmotionCalculator.AddEmotionToDB();
-            //
         }
     }
 }

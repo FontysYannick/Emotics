@@ -7,18 +7,19 @@
 #include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
 #include <dht.h>
+#include <Adafruit_Sensor.h>
 
 dht TempSensor;
 
 #define DHT11_PIN 7
 ///Pins (BPMSensor, RGB, Button, LCD)////////////////////////////////////////////////////
-const int PulseSensorPin = A5; //pin voor hartslag sensor
-const int RGBGreen = A1;
-const int RGBRed = A0;
-const int RGBBlue = A2;
+const int PulseSensorPin = A3; //pin voor hartslag sensor
+const int RGBGreen = A2;
+const int RGBRed = A1;
+const int RGBBlue = A0;
 const int Button = 1;
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //pins voor lcd scherm
+LiquidCrystal lcd(13, 11, 5, 4, 3, 2); //pins voor lcd scherm
 ///Normal variable for button////////////////////////////////////////////////////////////
 
 int LastButtonState = 0;
@@ -33,20 +34,16 @@ unsigned long CurrentTime = millis();
 
 ///ID and WW for Wifi////////////////////////////////////////////////////////////////////
 
-char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
-char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
+//char SSID[] = "MSI9247"; //mobiele hotspot van laptop naam
+//char PASS[] = "gr3wt2h64"; //mobiele hotspot ww
 
-//char SSID[] = "LAPTOP-TGTISK9B 1790";
-//char PASS[] = "955Y1n51";
+char SSID[] = "LAPTOP-TGTISK9B 1790";
+char PASS[] = "955Y1n51";
 
 int status = WL_IDLE_STATUS; //Wifi status
 ///Database//////////////////////////////////////////////////////////////////////////////
 
-const char server[] = "studmysql01.fhict.local"; 
-int clientId = 0;
 
-WiFiClient wifi;
-HttpClient client = HttpClient(wifi, server, 2435);
 
 ///Heartbeat/////////////////////////////////////////////////////////////////////////////
 
@@ -59,8 +56,66 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
+
+const unsigned long eventTimeMinute = 10000; //60000
+unsigned long previousTimeMinute = 0;
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
+void SendData()
+{
+	WiFiClient client;
+
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+
+String BPMDATA = "349";
+String O2 = "99";
+String Temp = "1000";
+
+int    HTTP_PORT   = 80;
+String HTTP_METHOD = "GET";
+char   HOST_NAME[] = "192.168.2.157"; // change to your PC's IP address
+String PATH_NAME   = "/insert_temp.php";
+String queryString = "?BPM=" + BPMDATA + "&Temp=" + Temp + "&O2=" + O2;
+
+  if(client.connect(HOST_NAME, HTTP_PORT)) {
+    // if connected:
+    Serial.println("Connected to server");
+    // make a HTTP request:
+    // send HTTP header
+    client.println(HTTP_METHOD + " " + PATH_NAME + queryString + "HTTP/1.1");
+    client.println("Host: " + String(HOST_NAME));
+    client.println("Connection: close");
+    client.println(); // end HTTP header
+
+    while(client.connected()) {
+      if(client.available()){
+        // read an incoming byte from the server and print it to serial monitor:
+        char c = client.read();
+        Serial.print(c);
+      }
+    }
+
+    // the server's disconnected, stop the client:
+    client.stop();
+    Serial.println();
+    Serial.println("disconnected");
+  } else {// if not connected:
+    Serial.println("connection failed");
+  }
+
+}
+
+void time()
+{
+	  unsigned long currentTimeMinute = millis();
+	   if(currentTimeMinute - previousTimeMinute >= eventTimeMinute)
+  {
+    SendData();
+  }
+}
 void setup() 
 {
 
@@ -108,14 +163,7 @@ void setup()
 
 ////////////////////////////
 
- int temp;
-temp = 1;
-
-client.print(temp);
-Serial.print("Yeah... it ain't holding");
- //int temp = 4;
- // int humid = 5;
-
+/*
   if (client.connect("studmysql01.fhict.local", 80))
   {
     // REPLACE WITH YOUR SERVER ADDRESS
@@ -218,9 +266,12 @@ void loop()
 ///BPM to BPM variable//////////////////////////////////////////////////////////////////
 	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
 
-	int chk = TempSensor.read11(DHT11_PIN);
+	double chk = TempSensor.read11(DHT11_PIN);
 
-	lcd.print(TempSensor.temperature);
+	Serial.print("Temperature : ");
+	Serial.println(TempSensor.temperature);
+	Serial.print("Humidity : ");
+	Serial.println(TempSensor.humidity);
 ///LCD print BPM waarde/////////////////////////////////////////////////////////////////
 	lcd.setCursor(0, 0);
 	lcd.print("BPM: ");
@@ -255,6 +306,7 @@ void loop()
 		lcd.setCursor(15,0);
 		lcd.print(" ");
 		avgBPM = 0; //avarage BPM reset
+		time();
 	}
 	if (Second >= 10)
 	{
@@ -290,6 +342,7 @@ void loop()
 		lcd.print(" ");
 		lcd.setCursor(9,1);
 		lcd.print(Hour);
+	
 	}
 	if (Hour > 9)
 	{
@@ -346,16 +399,24 @@ if (Second >= 60)
 	Serial.print("avgBPM : ");
 	Serial.println(avgBPM / 60);
 }
-<<<<<<< HEAD
+
 ///Database connectie en doorsturen/////////////////////////////////////////////////////
-=======
+
 
 map(RGBRed, 0, 255, 0, 100);
 map(RGBGreen, 0, 255, 0, 100);
 map(RGBBlue, 0, 255, 0, 100);
 digitalWrite(RGBRed, 90);
-digitalWrite(RGBBlue, 0);
+digitalWrite(RGBBlue, 90);
 digitalWrite(RGBGreen, 0);
 
->>>>>>> Technology
+///Wanneer min voorbij dan data naar database////////////////////////////////////////////
+
+
 }
+
+
+//Kan nog handig zijn
+//int a = 10;
+//char *intStr = itoa(a);
+//String str = String(intStr);

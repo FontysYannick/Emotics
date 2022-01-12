@@ -56,11 +56,8 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
-
-const unsigned long eventTimeMinute = 10000; //60000
+const unsigned long eventTimeMinute = 3000000; //60000
 unsigned long previousTimeMinute = 0;
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -114,8 +111,10 @@ void time()
 	   if(currentTimeMinute - previousTimeMinute >= eventTimeMinute)
   {
     SendData();
+	previousTimeMinute = currentTimeMinute;
   }
 }
+
 void setup() 
 {
 
@@ -160,123 +159,24 @@ void setup()
 	Minute = 0;
 ///Button is input//////////////////////////////////////////////////////////////////////
 	pinMode(Button, INPUT); 
-
-////////////////////////////
-
-/*
-  if (client.connect("studmysql01.fhict.local", 80))
-  {
-    // REPLACE WITH YOUR SERVER ADDRESS
-    Serial.println("connected");
-    client.println("GET /insertmysql.php?temp=");
-    //client.println("?temp=");
-    client.println("4");
-    //client.println("Humid=");
-    //client.println(humid);
-    client.println(" HTTP/1.1");
-    client.println("Host: 10.0.0.56");
-    //client.println("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
-    client.println();
-    //client.print(query);
-    //client.print("Content-Length: ");
-    //int thisLength = query.length();
-    //client.println(thisLength);
-    
-  }
-  delay(2000);
-  Serial.println("Response: ");
-  while (client.connected() || client.available())
-  {
-    Serial.write(client.read());
-  }
-delay(10000);
-}
-
-
-
-
-void SendData() {
-/*void registerArduino() {
-  StaticJsonDocument<8> json;
-
-  json["tafelNummer"] = 1;
-
-  String data;
-  serializeJson(json, data);
-
-  client.beginRequest();
-  client.post("/register", "application/json", data);
-
-  if(client.responseStatusCode() == 200) {
-    StaticJsonDocument<24> response;
-    deserializeJson(response, client.responseBody());
-    clientId = response["id"];
-  }
-}
-
-void updateAmperage() {
-  	StaticJsonDocument<16> json;
-
-  	json["clientId"] = clientId;
-  	json[BPM] = 100;
-
- 	String data;
-  	serializeJson(json, data);
-
-	client.beginRequest();
-  	client.post("/emotietabel", "application/json", data);
-
-  	if(client.responseStatusCode() == 406) {
-    	registerArduino();
-  	}
-}
-
-	if (CurrentTime - PreviousTime >= EventTime)
-	{
-		registerArduino();
-	}
-	
-	if (CurrentTime - PreviousTime >= EventTime)
-	{
-	updateAmperage();
-	client.print("Test");
-	}
-
-	if(client.connect(server, 3306)) {
-		client.print("GET /write_data.php?");
-		client.print("value=");
-		client.print(Signaal / 10);
-		client.println(" HTTP/1.1"); 
-		client.println("Host: 192.168.137.207");
-		client.println("Connection: close");
-		client.println();
-		client.println();
-		client.stop();
-  }
-  else {
-
-    Serial.println("--> connection failed\n");
-  }*/
-
 }
 
 
 void loop()
 {
+///Temperature sensor/////////////////////////////////////////////////////////////////////////
+	double chk = TempSensor.read11(DHT11_PIN);
 ///BPM to BPM variable//////////////////////////////////////////////////////////////////
 	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
-
-	double chk = TempSensor.read11(DHT11_PIN);
+///LCD en Serial print waardes/////////////////////////////////////////////////////////////////
+	lcd.setCursor(0, 0);
+	lcd.print("BPM: ");
+	lcd.print(BPM);
 
 	Serial.print("Temperature : ");
 	Serial.println(TempSensor.temperature);
 	Serial.print("Humidity : ");
 	Serial.println(TempSensor.humidity);
-///LCD print BPM waarde/////////////////////////////////////////////////////////////////
-	lcd.setCursor(0, 0);
-	lcd.print("BPM: ");
-	lcd.print(BPM);
-
 ///Timer showing on LCD screen//////////////////////////////////////////////////////////
 	if (Second < 10)
 	{
@@ -306,7 +206,6 @@ void loop()
 		lcd.setCursor(15,0);
 		lcd.print(" ");
 		avgBPM = 0; //avarage BPM reset
-		time();
 	}
 	if (Second >= 10)
 	{
@@ -384,7 +283,7 @@ void loop()
 	}
 	else {
 		Serial.println("Sport Modus : OFF");
-		SendData();
+		//SendData();
 	}
 
 ///Saving BPM for later use as avarage//////////////////////////////////////////////////
@@ -402,6 +301,9 @@ if (Second >= 60)
 
 ///Database connectie en doorsturen/////////////////////////////////////////////////////
 
+time();
+
+///rgb gedoe////
 
 map(RGBRed, 0, 255, 0, 100);
 map(RGBGreen, 0, 255, 0, 100);
@@ -412,10 +314,7 @@ digitalWrite(RGBGreen, 0);
 
 ///Wanneer min voorbij dan data naar database////////////////////////////////////////////
 
-
 }
-
-
 //Kan nog handig zijn
 //int a = 10;
 //char *intStr = itoa(a);

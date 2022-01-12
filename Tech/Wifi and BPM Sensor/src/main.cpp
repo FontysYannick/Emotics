@@ -56,8 +56,10 @@ int Second = 0;
 int Minute = 0;
 int Hour = 0;
 
-const unsigned long eventTimeMinute = 3000000; //60000
+const unsigned long eventTimeMinute = 60000; //60000
 unsigned long previousTimeMinute = 0;
+const unsigned long eventTimeSecond = 1000;
+unsigned long previousTimeSecond = 0;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,72 +115,7 @@ void time()
     SendData();
 	previousTimeMinute = currentTimeMinute;
   }
-}
-
-void setup() 
-{
-
-///Begin lcd and Serial/////////////////////////////////////////////////////////////////
-	lcd.begin(16, 2, 32);
-	Serial.begin(9600);
-	pinMode(RGBRed, OUTPUT);
-	pinMode(RGBBlue, OUTPUT);
-	pinMode(RGBGreen, OUTPUT);
-///Connect to wifi//////////////////////////////////////////////////////////////////////
-	while (status != WL_CONNECTED)
-  	{
-   		Serial.print("Connecting to WiFi");
-    	delay(200);
-		Serial.print(".");
-		delay(200);
-		Serial.print(".");
-		delay(200);
-		Serial.println(".");
-		delay(200);
-		status = WiFi.begin(SSID, PASS);
-  	}
-
- 	Serial.println("Connected to the WiFi network");
- 	Serial.println(WiFi.localIP());
-	delay(1200);
-///Time to LCD screen///////////////////////////////////////////////////////////////////
-	lcd.setCursor(0, 1);
-	lcd.print("Timer : 00.00.00");
-	lcd.setCursor(13,1);
-	lcd.setCursor(8,0);
-		if (SportModus == HIGH)
-		{
-			lcd.print("Sprt:ON ");
-		}
-		else {
-			lcd.print("Sprt:OFF");	
-		}
-
-///Start time set on 0//////////////////////////////////////////////////////////////////
-	Second = 0;
-	Minute = 0;
-///Button is input//////////////////////////////////////////////////////////////////////
-	pinMode(Button, INPUT); 
-}
-
-
-void loop()
-{
-///Temperature sensor/////////////////////////////////////////////////////////////////////////
-	double chk = TempSensor.read11(DHT11_PIN);
-///BPM to BPM variable//////////////////////////////////////////////////////////////////
-	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
-///LCD en Serial print waardes/////////////////////////////////////////////////////////////////
-	lcd.setCursor(0, 0);
-	lcd.print("BPM: ");
-	lcd.print(BPM);
-
-	Serial.print("Temperature : ");
-	Serial.println(TempSensor.temperature);
-	Serial.print("Humidity : ");
-	Serial.println(TempSensor.humidity);
-///Timer showing on LCD screen//////////////////////////////////////////////////////////
-	if (Second < 10)
+  	if (Second < 10)
 	{
 		lcd.setCursor(15,1);
 		lcd.print(Second);
@@ -206,6 +143,7 @@ void loop()
 		lcd.setCursor(15,0);
 		lcd.print(" ");
 		avgBPM = 0; //avarage BPM reset
+		time();
 	}
 	if (Second >= 10)
 	{
@@ -266,7 +204,192 @@ void loop()
 	Serial.println("");
 
 	Second ++;
+}
 
+void setup() 
+{
+
+///Begin lcd and Serial/////////////////////////////////////////////////////////////////
+	lcd.begin(16, 2, 32);
+	Serial.begin(9600);
+	pinMode(RGBRed, OUTPUT);
+	pinMode(RGBBlue, OUTPUT);
+	pinMode(RGBGreen, OUTPUT);
+///Connect to wifi//////////////////////////////////////////////////////////////////////
+	while (status != WL_CONNECTED)
+  	{
+   		Serial.print("Connecting to WiFi");
+    	delay(200);
+		Serial.print(".");
+		delay(200);
+		Serial.print(".");
+		delay(200);
+		Serial.println(".");
+		delay(200);
+		status = WiFi.begin(SSID, PASS);
+  	}
+
+ 	Serial.println("Connected to the WiFi network");
+ 	Serial.println(WiFi.localIP());
+	delay(1200);
+///Time to LCD screen///////////////////////////////////////////////////////////////////
+	lcd.setCursor(0, 1);
+	lcd.print("Timer : 00.00.00");
+	lcd.setCursor(13,1);
+	lcd.setCursor(8,0);
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
+
+///Start time set on 0//////////////////////////////////////////////////////////////////
+	Second = 0;
+	Minute = 0;
+///Button is input//////////////////////////////////////////////////////////////////////
+	pinMode(Button, INPUT); 
+
+////////////////////////////
+
+}
+
+
+void loop()
+{
+///Temperature sensor/////////////////////////////////////////////////////////////////////////
+	double chk = TempSensor.read11(DHT11_PIN);
+///BPM to BPM variable//////////////////////////////////////////////////////////////////
+	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
+///LCD en Serial print waardes/////////////////////////////////////////////////////////////////
+	lcd.setCursor(0, 0);
+	lcd.print("BPM: ");
+	lcd.print(BPM);
+
+	Serial.print("Temperature : ");
+	Serial.println(TempSensor.temperature);
+	Serial.print("Humidity : ");
+	Serial.println(TempSensor.humidity);
+///Timer showing on LCD screen//////////////////////////////////////////////////////////
+void klok(){
+	unsigned long currentTimeSecond = millis();
+	
+	if (currentTimeSecond - previousTimeSecond >= eventTimeSecond)
+	{
+		Second++;
+	}
+	
+	if (Second < 10)
+	{
+		lcd.setCursor(15,1);
+		lcd.print(Second);
+		lcd.setCursor(14,1);
+		lcd.print("0");
+	}
+	else 
+	{
+		lcd.setCursor(14,1);
+		lcd.print(Second);	
+	}
+	
+	if (Second >= 60)
+	{
+		Second = 0;
+		Minute ++;
+
+		lcd.setCursor(14,1);
+		lcd.print("00");
+		lcd.setCursor(12,1);
+		lcd.print(Minute);
+		lcd.setCursor(8,0);
+		lcd.print("avg: ");
+		lcd.print(avgBPM / 60);
+		lcd.setCursor(15,0);
+		lcd.print(" ");
+		avgBPM = 0; //avarage BPM reset
+	}
+	
+	if (Second >= 10)
+	{
+		lcd.setCursor(8,0);
+		
+		if (SportModus == HIGH)
+		{
+			lcd.print("Sprt:ON ");
+		}
+		else {
+			lcd.print("Sprt:OFF");	
+		}
+	}
+	
+	if (Minute > 9)
+	{
+		lcd.setCursor(11, 1);
+		lcd.print(Minute);
+		lcd.setCursor(13,1);
+		lcd.print(".");
+	}
+	
+	if (Minute >= 60)
+	{
+		Second = 0;
+		Minute = 0;
+		Hour ++;
+
+		lcd.setCursor(14,1);
+		lcd.print("00");
+		lcd.setCursor(11,1);
+		lcd.print("00");
+		lcd.setCursor(15,0);
+		lcd.print(" ");
+		lcd.setCursor(9,1);
+		lcd.print(Hour);
+	
+	}
+	
+	if (Hour > 9)
+	{
+		lcd.setCursor(8, 1);
+		lcd.print(Hour);
+		lcd.setCursor(10,1);
+		lcd.print(".");
+	}
+	
+	Serial.print("Hour : ");
+	Serial.println(Hour);
+
+	Serial.print("Min : ");
+	Serial.println(Minute);
+
+	Serial.print("Sec : ");
+	Serial.println(Second);
+
+	Serial.print("BPM : ");
+	Serial.println(BPM);
+
+	Serial.println("");
+}
+
+void loop()
+{
+///BPM to BPM variable//////////////////////////////////////////////////////////////////
+	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
+
+	double chk = TempSensor.read11(DHT11_PIN);
+
+	Serial.print("Temperature : ");
+	Serial.println(TempSensor.temperature);
+	Serial.print("Humidity : ");
+	Serial.println(TempSensor.humidity);
+///LCD print BPM waarde/////////////////////////////////////////////////////////////////
+	lcd.setCursor(0, 0);
+	lcd.print("BPM: ");
+	lcd.print(BPM);
+
+///Timer showing on LCD screen//////////////////////////////////////////////////////////
+
+	klok();
 	delay(1000);//moet eig naar millis
 	
 ///Sport mode, if you are active you're heartbeat is not send to the database////////////

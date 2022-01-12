@@ -273,7 +273,10 @@ void loop()
 	Serial.println(TempSensor.humidity);
 ///Timer showing on LCD screen//////////////////////////////////////////////////////////
 
+<<<<<<< Updated upstream
 }
+=======
+>>>>>>> Stashed changes
 void klok(){
 	unsigned long currentTimeSecond = millis();
 	

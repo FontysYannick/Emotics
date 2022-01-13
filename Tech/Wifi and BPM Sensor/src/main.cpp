@@ -255,28 +255,6 @@ void setup()
 
 }
 
-
-void loop()
-{
-///Temperature sensor/////////////////////////////////////////////////////////////////////////
-	double chk = TempSensor.read11(DHT11_PIN);
-///BPM to BPM variable//////////////////////////////////////////////////////////////////
-	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
-///LCD en Serial print waardes/////////////////////////////////////////////////////////////////
-	lcd.setCursor(0, 0);
-	lcd.print("BPM: ");
-	lcd.print(BPM);
-
-	Serial.print("Temperature : ");
-	Serial.println(TempSensor.temperature);
-	Serial.print("Humidity : ");
-	Serial.println(TempSensor.humidity);
-///Timer showing on LCD screen//////////////////////////////////////////////////////////
-
-<<<<<<< Updated upstream
-}
-=======
->>>>>>> Stashed changes
 void klok(){
 	unsigned long currentTimeSecond = millis();
 	

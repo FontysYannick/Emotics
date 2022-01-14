@@ -77,7 +77,7 @@ int    HTTP_PORT   = 80;
 String HTTP_METHOD = "GET";
 char   HOST_NAME[] = "192.168.2.157"; // change to your PC's IP address
 String PATH_NAME   = "/insert_temp.php";
-String queryString = "?BPM=" + BPMDATA + "&Temp=" + Temp + "&O2=" + O2;
+String queryString = "?BPM=" + BPM + "&Temp=" + Temp + "&O2=" + O2;
 
   if(client.connect(HOST_NAME, HTTP_PORT)) {
     // if connected:
@@ -115,95 +115,6 @@ void time()
     SendData();
 	previousTimeMinute = currentTimeMinute;
   }
-  	if (Second < 10)
-	{
-		lcd.setCursor(15,1);
-		lcd.print(Second);
-		lcd.setCursor(14,1);
-		lcd.print("0");
-	}
-	else 
-	{
-		lcd.setCursor(14,1);
-		lcd.print(Second);	
-	}
-	
-	if (Second >= 60)
-	{
-		Second = 0;
-		Minute ++;
-
-		lcd.setCursor(14,1);
-		lcd.print("00");
-		lcd.setCursor(12,1);
-		lcd.print(Minute);
-		lcd.setCursor(8,0);
-		lcd.print("avg: ");
-		lcd.print(avgBPM / 60);
-		lcd.setCursor(15,0);
-		lcd.print(" ");
-		avgBPM = 0; //avarage BPM reset
-		time();
-	}
-	if (Second >= 10)
-	{
-		lcd.setCursor(8,0);
-		if (SportModus == HIGH)
-		{
-			lcd.print("Sprt:ON ");
-		}
-		else {
-			lcd.print("Sprt:OFF");	
-		}
-	}
-	
-
-	if (Minute > 9)
-	{
-		lcd.setCursor(11, 1);
-		lcd.print(Minute);
-		lcd.setCursor(13,1);
-		lcd.print(".");
-	}
-	if (Minute >= 60)
-	{
-		Second = 0;
-		Minute = 0;
-		Hour ++;
-
-		lcd.setCursor(14,1);
-		lcd.print("00");
-		lcd.setCursor(11,1);
-		lcd.print("00");
-		lcd.setCursor(15,0);
-		lcd.print(" ");
-		lcd.setCursor(9,1);
-		lcd.print(Hour);
-	
-	}
-	if (Hour > 9)
-	{
-		lcd.setCursor(8, 1);
-		lcd.print(Hour);
-		lcd.setCursor(10,1);
-		lcd.print(".");
-	}
-	
-	Serial.print("Hour : ");
-	Serial.println(Hour);
-
-	Serial.print("Min : ");
-	Serial.println(Minute);
-
-	Serial.print("Sec : ");
-	Serial.println(Second);
-
-	Serial.print("BPM : ");
-	Serial.println(BPM);
-
-	Serial.println("");
-
-	Second ++;
 }
 
 void setup() 
@@ -421,7 +332,4 @@ digitalWrite(RGBGreen, 0);
 ///Wanneer min voorbij dan data naar database////////////////////////////////////////////
 
 }
-//Kan nog handig zijn
-//int a = 10;
-//char *intStr = itoa(a);
-//String str = String(intStr);
+///Mogelijk komt er nog een deel 2///////////////////////////////////////////////////////

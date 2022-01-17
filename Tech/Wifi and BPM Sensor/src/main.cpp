@@ -65,7 +65,7 @@ unsigned long previousTimeSecond = 0;
 
 void SendData()
 {
-	WiFiClient client;
+/*	WiFiClient client;
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 
@@ -104,7 +104,7 @@ String queryString = "?BPM=" + BPM + "&Temp=" + Temp + "&O2=" + O2;
   } else {// if not connected:
     Serial.println("connection failed");
   }
-
+*/
 }
 
 void time()

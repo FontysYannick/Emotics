@@ -43,8 +43,8 @@ int status = WL_IDLE_STATUS; //Wifi status
 
 ///Database//////////////////////////////////////////////////////////////////////////////
 
-float temperature = TempSensor.temperature;//naar kijken want 0.00
-float oxygen = TempSensor.humidity;
+int temperature = TempSensor.temperature;//naar kijken want 0.00
+int oxygen = TempSensor.humidity;
 
 ///Heartbeat/////////////////////////////////////////////////////////////////////////////
 

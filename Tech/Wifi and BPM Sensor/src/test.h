@@ -1,4 +1,3 @@
-///Librarys//////////////////////////////////////////////////////////////////////
 #include <Arduino.h>
 #include <PulseSensorPlayground.h>
 #include <WiFiNINA.h>
@@ -43,8 +42,8 @@ int status = WL_IDLE_STATUS; //Wifi status
 
 ///Database//////////////////////////////////////////////////////////////////////////////
 
-float temperature = TempSensor.temperature;//naar kijken want 0.00
-float oxygen = TempSensor.humidity;
+double temperature = TempSensor.temperature;//naar kijken want 0.00
+double oxygen = TempSensor.humidity;
 
 ///Heartbeat/////////////////////////////////////////////////////////////////////////////
 
@@ -131,7 +130,6 @@ String queryStringO2 = "&O2=";
 
     // the server's disconnected, stop the client:
     client.stop();
-	Serial.println("");
     Serial.println("disconnected");
   } 
   
@@ -273,7 +271,6 @@ void setup()
 	lcd.print("Timer : 00.00.00");
 
 	lcd.setCursor(8,0);
-
 	if (SportModus == HIGH)
 	{
 		lcd.print("Sprt:ON ");
@@ -296,71 +293,3 @@ void setup()
 	pinMode(RGBGreen, OUTPUT);
 
 }
-
-void loop()
-{
-///BPM map//////////////////////////////////////////////////////////////////
-
-	BPM = map(analogRead(PulseSensorPin), 0, 1000, 0, 100);
-
-///Reading Temperature and Humidity, then printing in serial////////////////
-
-	double chk = TempSensor.read11(DHT11_PIN);
-
-	Serial.print("Temperature : ");
-	Serial.println(temperature);
-	Serial.print("Humidity : ");
-	Serial.println(oxygen);
-
-///calculating and printing average BPM//////////////////////////////////////////////////
-
-	if (BPM >= 0)
-	{
-		avgBPM = avgBPM + BPM;
-	}
-
-	if (Second >= 60)
-	{
-		Serial.print("avgBPM : ");
-		Serial.println(avgBPM / 60);
-	}
-
-		lcd.setCursor(0, 0);
-		lcd.print("BPM: ");
-		lcd.print(BPM);
-
-///clock showing on LCD screen//////////////////////////////////////////////
-
-	clock();
-	delay(1000); // snap niet waarom dit ding er is
-	
-///Sport mode, if you are active you're data is not send to the database
-
-	ButtonState = digitalRead(Button);
-
-	if (ButtonState == HIGH) 
-	{
-
- 		SportModus = !SportModus;
-	}
-	if (SportModus == HIGH)
-	{
-		Serial.println("Sport Modus : ON");
-	}
-	else 
-	{
-		Serial.println("Sport Modus : OFF");
-		timeSendData();
-	}
-
-///rgb gedoe////
-
-map(RGBRed, 0, 255, 0, 100);
-map(RGBGreen, 0, 255, 0, 100);
-map(RGBBlue, 0, 255, 0, 100);
-digitalWrite(RGBRed, 90);
-digitalWrite(RGBBlue, 90);
-digitalWrite(RGBGreen, 0);
-
-}
-///Mogelijk komt er nog een deel 2///////////////////////////////////////////////////////

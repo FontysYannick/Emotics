@@ -43,7 +43,7 @@ int status = WL_IDLE_STATUS; //Wifi status
 
 ///Database//////////////////////////////////////////////////////////////////////////////
 
-int temperature = TempSensor.temperature;//naar kijken want 0.00
+//int temperature = TempSensor.temperature;//naar kijken want 0.00
 int oxygen = TempSensor.humidity;
 
 ///Heartbeat/////////////////////////////////////////////////////////////////////////////
@@ -112,9 +112,12 @@ String queryStringO2 = "&O2=";
   {
     // if connected:
     Serial.println("Connected to server");
+
+	double temperatuuuuur = map(TempSensor.temperature, 0, 50, 35, 39);
+	int oxygeeeeeeeeen = map(TempSensor.humidity, 0, 100, 90, 100);
     // make a HTTP request:
     // send HTTP header
-    client.println(HTTP_METHOD + " " + PATH_NAME + queryStringBPM + BPM + queryStringTemp + temperature + queryStringO2 + oxygen + "HTTP/1.1");
+    client.println(HTTP_METHOD + " " + PATH_NAME + queryStringBPM + BPM + queryStringTemp + temperatuuuuur + queryStringO2 + oxygeeeeeeeeen + "HTTP/1.1");
     client.println("Host: " + String(HOST_NAME));
     client.println("Connection: close");
     client.println(); // end HTTP header
@@ -308,9 +311,9 @@ void loop()
 	double chk = TempSensor.read11(DHT11_PIN);
 
 	Serial.print("Temperature : ");
-	Serial.println(temperature);
+	Serial.println(TempSensor.temperature);
 	Serial.print("Humidity : ");
-	Serial.println(oxygen);
+	Serial.println(TempSensor.humidity);
 
 ///calculating and printing average BPM//////////////////////////////////////////////////
 

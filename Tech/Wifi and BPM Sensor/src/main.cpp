@@ -66,7 +66,7 @@ unsigned long previousTimeSecond = 0;
 //
 
 //timeSendData
-const unsigned long eventTimeMinute = 20000; //60000
+const unsigned long eventTimeMinute = 60000; 
 unsigned long previousTimeMinute = 0;
 //
 

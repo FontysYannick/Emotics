@@ -13,9 +13,9 @@
 
 const int PulseSensorPin = A3; //pin voor hartslag sensor
 
-const int RGBGreen = A2;  
-const int RGBRed = A1;
-const int RGBBlue = A0;
+const int RGBGreen = A1;  
+const int RGBRed = A0;
+const int RGBBlue = A2;
 
 const int Button = 1;
 
@@ -115,7 +115,7 @@ String queryStringO2 = "&O2=";
 
 	double temperatuuuuur = map(TempSensor.temperature, 0, 50, 35, 39);
 	int oxygeeeeeeeeen = map(TempSensor.humidity, 0, 100, 90, 100);
-    // make a HTTP request:
+    // make a HTTP request
     // send HTTP header
     client.println(HTTP_METHOD + " " + PATH_NAME + queryStringBPM + BPM + queryStringTemp + temperatuuuuur + queryStringO2 + oxygeeeeeeeeen + "HTTP/1.1");
     client.println("Host: " + String(HOST_NAME));
@@ -259,6 +259,53 @@ void clock()
 	Serial.println("");
 }
 
+void Emotitions(bool reset = false)
+{
+  static enum { Angry, Happy, Anxious, Sad } state = Angry;
+
+if (reset)
+{
+  state = Angry;
+}
+
+  switch(state)
+  {
+    case Angry:
+		analogWrite(RGBRed, 255);
+		analogWrite(RGBGreen, 0);
+		analogWrite(RGBBlue, 0);
+    	state = Happy;
+    break;
+
+////////////////
+
+    case Happy:
+    analogWrite(RGBRed, 0);
+	analogWrite(RGBGreen, 255);
+	analogWrite(RGBBlue, 0);
+    state = Anxious;
+    break;
+
+//////////////////
+
+    case Anxious:
+    analogWrite(RGBRed, 0);
+	analogWrite(RGBGreen, 149);
+	analogWrite(RGBBlue, 255);
+    state = Sad;
+    break;
+    
+/////////////////
+
+    case Sad:
+    analogWrite(RGBRed, 56);
+	analogWrite(RGBGreen, 53);
+	analogWrite(RGBBlue, 67);
+    state = Angry;
+    break;
+  }
+}
+
 void setup() 
 {
 ///Begin lcd and Serial/////////////////////////////////////////////////////////////////
@@ -355,15 +402,7 @@ void loop()
 		Serial.println("Sport Modus : OFF");
 		timeSendData();
 	}
-
-///rgb gedoe////
-
-map(RGBRed, 0, 255, 0, 100);
-map(RGBGreen, 0, 255, 0, 100);
-map(RGBBlue, 0, 255, 0, 100);
-digitalWrite(RGBRed, 90);
-digitalWrite(RGBBlue, 90);
-digitalWrite(RGBGreen, 0);
-
+Emotitions();
 }
 ///Mogelijk komt er nog een deel 2///////////////////////////////////////////////////////
+
